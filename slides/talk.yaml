@@ -2,7 +2,7 @@ meta:
   title: "Documentation Is the King"
   subtitle: "How to Rule Your Agents"
   tagline: "AI Heroes 2026"
-  theme: root-shell
+  theme: grid-zero
   editing: false
 
 # Every "TODO:" marks content the speaker must write or confirm.
