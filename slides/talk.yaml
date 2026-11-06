@@ -6,7 +6,7 @@ meta:
   editing: false
 
 # Every "TODO:" marks content the speaker must write or confirm.
-# Source of the structure: _docs/talk/outlient.txt (speaker notes) + _docs/talk/abstract.md.
+# Source of the structure: _docs/talk/outline.txt (speaker notes) + _docs/talk/abstract.md.
 # Outline and slide-id map: _docs/talk/outline.md
 
 slides:

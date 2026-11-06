@@ -20,7 +20,7 @@ Talk outline (skeleton). Deck: `slides/talk.yaml`. Abstract: `abstract.md`.
 
 ## Narrative arc
 
-Structure from the speaker notes in `outlient.txt`.
+Structure from the speaker notes in `outline.txt`.
 
 1. **Introduction.** Docs used to slow teams down; with agents they drive. Documentation lives in
    code, for humans and for agents, and comes in many kinds. Three principles: context, control,

@@ -6,6 +6,7 @@ All docs under `_docs/`. Code and decks live elsewhere (`slides/`, `splitwise-li
 
 - [talk/abstract.md](talk/abstract.md) — Talk abstract: docs as the driver of agent output, the virtuous circle, self-organizing documentation instead of bloated instruction files.
 - [talk/outline.md](talk/outline.md) — Talk outline: narrative arc, acts mapped to slide ids, key messages, TODOs. Deck: [`../slides/talk.yaml`](../slides/talk.yaml).
+- [talk/outline.txt](talk/outline.txt) — Speaker's raw notes the talk structure comes from.
 
 ## Workshop — "Pragmatic Agentic Development: Docs, Context and Workflow in Practice"
 
