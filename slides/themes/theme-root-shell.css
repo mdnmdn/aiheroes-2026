@@ -1,0 +1,83 @@
+/* ============================================================
+   ROOT SHELL — Terminal Green + Logo Navy
+   Hacker aesthetic with CRT scan lines and blinking cursors.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+
+:root {
+    --bg-primary:    #0a1628;
+    --bg-dark:       #040c18;
+    --bg-surface:    #0f2040;
+    --accent:        #39d353;
+    --accent-dim:    #1a6b2a;
+    --accent-gold:   #d4911b;
+    --accent-gold-l: #f0b840;
+    --text:          #d0e8ff;
+    --text-dim:      #5b7fa6;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'JetBrains Mono', monospace; background: var(--bg-primary); }
+
+.slide { background: var(--bg-primary); position: relative; }
+/* Scan lines */
+.slide::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(57,211,83,0.015) 3px, rgba(57,211,83,0.015) 4px);
+    pointer-events: none; z-index: 0;
+}
+/* CRT vignette */
+.slide::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, transparent 60%, rgba(4,12,24,0.6) 100%);
+    pointer-events: none; z-index: 0;
+}
+.slide-content { position: relative; z-index: 1; }
+#particleCanvas { display: none; }
+
+h1 { font-family: 'JetBrains Mono', monospace; color: var(--accent); text-shadow: 0 0 20px rgba(57,211,83,0.4); letter-spacing: -0.02em; text-transform: none; }
+h2 { font-family: 'JetBrains Mono', monospace; color: var(--accent); text-transform: none; letter-spacing: -0.01em; }
+h2::before { content: '// '; color: var(--accent-dim); font-weight: 400; }
+h3 { font-family: 'JetBrains Mono', monospace; color: var(--text-dim); }
+h3::before { content: '# '; color: var(--accent-dim); }
+p, li { font-family: 'JetBrains Mono', monospace; color: var(--text); line-height: 1.7; }
+.subtitle { font-family: 'JetBrains Mono', monospace; color: var(--text-dim); font-weight: 400; }
+.subtitle::before { content: '> '; color: var(--accent); }
+.tagline { font-family: 'JetBrains Mono', monospace; color: var(--text-dim); }
+.tagline::before { content: '/* '; color: var(--accent-dim); }
+.tagline::after  { content: ' */'; color: var(--accent-dim); }
+
+/* Blinking cursor on title slide */
+.title-slide h1::after { content: '█'; color: var(--accent); animation: blink 1s step-end infinite; margin-left: 2px; font-size: 0.85em; }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+.accent-line { height: 2px; background: var(--accent); box-shadow: 0 0 8px rgba(57,211,83,0.5); }
+
+.neon-badge {
+    background: var(--bg-surface);
+    border: 1px solid var(--accent-dim);
+    border-left: 3px solid var(--accent);
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.03em;
+}
+.neon-badge::before { content: '$ '; color: var(--accent-dim); }
+
+.logo { filter: drop-shadow(0 0 12px rgba(57,211,83,0.3)) drop-shadow(0 0 24px rgba(212,145,27,0.2)); }
+.bullet-list li::before { content: '→ '; color: var(--accent); }
+
+.progress-bar { height: 2px; background: var(--accent); box-shadow: 0 0 8px rgba(57,211,83,0.8); }
+.nav-dot { border: 1px solid var(--accent-dim); border-radius: 0; }
+.nav-dot.active { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 8px rgba(57,211,83,0.7); }
+
+.edit-toggle { background: var(--accent); border-radius: 2px; box-shadow: 0 0 16px rgba(57,211,83,0.5); color: var(--bg-dark); }
+body.edit-active [contenteditable] { outline: 1px dashed var(--accent); background: rgba(57,211,83,0.04); }
+.edit-banner { background: var(--bg-surface); border: 1px solid var(--accent-dim); border-left: 3px solid var(--accent); color: var(--accent); border-radius: 2px; font-family: 'JetBrains Mono', monospace; }
+.keyboard-hint { font-family: 'JetBrains Mono', monospace; color: var(--text-dim); }
+
+.two-column > div, .kpi-card { background: var(--bg-surface); border: 1px solid rgba(57,211,83,0.2); padding: var(--content-gap); }
+.two-column > div:first-child { border-top: 2px solid var(--accent-gold); }
+.two-column > div:last-child  { border-top: 2px solid var(--accent); }
+.kpi-card { border-top: 2px solid var(--accent); }

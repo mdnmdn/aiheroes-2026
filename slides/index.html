@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/export/brand-doc-king-32.png">
+    <link rel="apple-touch-icon" href="assets/icons/export/brand-doc-king-180.png">
+
+    <!-- Base structural CSS -->
+    <link rel="stylesheet" href="lib/presentation.css">
+
+    <!-- Active theme (swapped by JS) -->
+    <link id="themeLink" rel="stylesheet" href="themes/theme-launch-pad.css">
+</head>
+<body>
+
+    <!-- Particle canvas (shown/hidden by theme CSS) -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Progress bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Edit mode controls -->
+    <div class="edit-hotzone"></div>
+    <button class="edit-toggle" id="editToggle" title="Edit mode (E)">✏️</button>
+    <div class="edit-banner" id="editBanner">Edit Mode • Click text to edit • Ctrl+S to save</div>
+
+    <!-- Navigation dots -->
+    <nav class="nav-dots" id="navDots"></nav>
+
+    <!-- General menu -->
+    <div class="general-menu" id="generalMenu">
+        <button class="menu-trigger" id="menuToggle" title="Menu">☰</button>
+        <div class="menu-panel" id="menuPanel">
+            <button class="menu-opt" data-action="home">🏠 Home</button>
+            <button class="menu-opt" data-action="refresh">↻ Refresh</button>
+            <button class="menu-opt" data-action="last">⏮ Go to Last</button>
+            <button class="menu-opt" data-action="fullscreen" id="fullscreenBtn">⛶ Fullscreen</button>
+            <div class="menu-divider"></div>
+            <div class="menu-panel-label">Theme</div>
+            <button class="menu-opt theme-opt" data-theme="launch-pad">
+                <span class="theme-dot" style="background:#f0b840;box-shadow:0 0 6px #f0b840"></span>Launch Pad
+            </button>
+            <button class="menu-opt theme-opt" data-theme="root-shell">
+                <span class="theme-dot" style="background:#39d353;box-shadow:0 0 6px #39d353"></span>Root Shell
+            </button>
+            <button class="menu-opt theme-opt" data-theme="grid-zero">
+                <span class="theme-dot" style="background:#00ffcc;box-shadow:0 0 6px #00ffcc"></span>Grid Zero
+            </button>
+            <button class="menu-opt theme-opt" data-theme="mission-control">
+                <span class="theme-dot" style="background:#f0a020;box-shadow:0 0 6px #f0a020"></span>Mission Control
+            </button>
+            <button class="menu-opt theme-opt" data-theme="teal-mustard">
+                <span class="theme-dot" style="background:#fcd34d;box-shadow:0 0 6px #fcd34d"></span>Teal Mustard
+            </button>
+            <button class="menu-opt theme-opt" data-theme="navy-apricot">
+                <span class="theme-dot" style="background:#ff9d6e;box-shadow:0 0 6px #ff9d6e"></span>Navy Apricot
+            </button>
+            <button class="menu-opt theme-opt" data-theme="violet-tokyo">
+                <span class="theme-dot" style="background:#ff2e88;box-shadow:0 0 6px #ff2e88"></span>Violet Tokyo
+            </button>
+        </div>
+    </div>
+
+    <!-- Slides (populated by JS) -->
+    <div id="slides-container"></div>
+
+    <!-- Loading screen -->
+    <div id="loading-screen">
+        <div class="loading-spinner"></div>
+        <div class="loading-label" id="loadingLabel">Loading presentation…</div>
+    </div>
+
+    <!-- Error screen -->
+    <div id="error-screen">
+        <div class="error-title">⚠ Cannot Load Presentation</div>
+        <div class="error-box" id="errorDetail"></div>
+    </div>
+
+    <!-- Optional: Disable edit mode globally (set before loading presentation.js) -->
+    <script>
+        window.EDIT_MODE_ENABLED = false;
+        window.DEFAULT_PRESENTATION_FILE = 'talk.yaml';
+        // Decks listed in the ☰ menu (file is relative to slides/). The selected deck
+        // is saved in sessionStorage, so reload and Home keep it.
+        window.PRESENTATIONS = [
+            { title: 'Talk — Documentation Is the King', file: 'talk.yaml' },
+            { title: 'Workshop — Pragmatic Agentic Development', file: 'workshop.yaml' },
+        ];
+    </script>
+
+    <!-- Optional embedded YAML (remove or modify as needed) -->
+    <!-- Set window.DEFAULT_PRESENTATION_FILE above to load a different default -->
+    <script type="application/x-yaml" id="defaultPresentation">
+# Empty - loads talk.yaml via DEFAULT_PRESENTATION_FILE
+    </script>
+
+    <!-- Syntax highlighting -->
+    <link rel="stylesheet" href="lib/highlight-github-dark.min.css">
+    <script src="lib/highlight.min.js"></script>
+
+    <!-- Mermaid diagrams -->
+    <script src="lib/mermaid.min.js"></script>
+
+    <!-- YAML parser -->
+    <script src="lib/js-yaml.min.js"></script>
+
+    <!-- Presentation engine -->
+    <script src="lib/presentation.js"></script>
+
+</body>
+</html>

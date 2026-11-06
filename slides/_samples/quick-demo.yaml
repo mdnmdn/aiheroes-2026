@@ -1,0 +1,40 @@
+meta:
+  title: Quick Git Demo
+  logo: assets/logo-small.png
+  theme: grid-zero
+  editing: true
+
+slides:
+
+  - layout: title
+    logo: assets/logo-small.png
+    h1: Quick Git Demo
+    subtitle: Alternative Presentation
+    tagline: Loaded via query parameter
+
+  - layout: bullets
+    h2: This is a Custom Presentation
+    items:
+      - Loaded from external YAML file
+      - Query parameter override works!
+      - Easy to swap presentations
+      - URL format"? presentation=quick-demo.yaml"
+      - Falls back to embedded if file not found
+
+  - layout: bullets-badge
+    h2: Key Feature
+    items:
+      - Single HTML file handles everything
+      - Works with file:// protocol
+      - Works with HTTP servers
+      - Customizable via external YAML
+    badge: git clone repo
+
+  - layout: title-closing
+    logo: assets/logo-small.png
+    h1: 🎉 Works!
+    items:
+      - No external dependencies
+      - Fast loading
+      - Flexible content
+    tagline: Try it out

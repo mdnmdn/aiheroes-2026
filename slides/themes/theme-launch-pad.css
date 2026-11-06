@@ -1,0 +1,69 @@
+/* ============================================================
+   LAUNCH PAD — Navy + Gold
+   Inspired by the logo's deep navy shield and gold rocket.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+    --bg-primary:   #0d2a6e;
+    --bg-dark:      #050e1f;
+    --accent:       #d4911b;
+    --accent-light: #f0b840;
+    --text:         #ffffff;
+    --text-dim:     rgba(255,255,255,0.5);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Space Mono', monospace; background: linear-gradient(140deg, var(--bg-primary), var(--bg-dark)); }
+
+.slide {
+    background: linear-gradient(140deg, var(--bg-primary), var(--bg-dark));
+    position: relative;
+}
+.slide::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(212,145,27,0.04) 35px, rgba(212,145,27,0.04) 70px);
+    pointer-events: none;
+}
+.slide-content { position: relative; z-index: 1; }
+#particleCanvas { display: none; }
+
+h1 { font-family: 'Syne', sans-serif; color: var(--text); text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.1; }
+h2 { font-family: 'Syne', sans-serif; color: var(--text); text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.2; }
+h3 { font-family: 'Space Mono', monospace; color: var(--accent-light); }
+p, li { font-family: 'Space Mono', monospace; color: var(--text); line-height: 1.6; }
+.subtitle { font-family: 'Space Mono', monospace; color: var(--accent-light); font-weight: 700; }
+.tagline  { font-family: 'Space Mono', monospace; color: rgba(240,184,64,0.85); }
+
+.accent-line { height: 3px; background: var(--accent); box-shadow: 0 0 8px rgba(212,145,27,0.4); }
+
+.neon-badge {
+    background: rgba(212,145,27,0.1);
+    border: 2px solid var(--accent);
+    color: var(--accent-light);
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    animation: lp-pulse 2.5s ease-in-out infinite;
+}
+@keyframes lp-pulse {
+    0%,100% { box-shadow: 0 0 10px rgba(212,145,27,0.4); text-shadow: 0 0 8px rgba(212,145,27,0.5); }
+    50%      { box-shadow: 0 0 22px rgba(212,145,27,0.7); text-shadow: 0 0 14px rgba(212,145,27,0.8); }
+}
+
+.logo { filter: drop-shadow(0 0 12px rgba(212,145,27,0.5)); }
+.bullet-list li::before { content: '▸ '; color: var(--accent); }
+
+.progress-bar { height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); box-shadow: 0 0 10px rgba(212,145,27,0.6); }
+.nav-dot { border: 2px solid var(--accent); }
+.nav-dot.active { background: var(--accent); box-shadow: 0 0 10px rgba(212,145,27,0.7); }
+
+.edit-toggle { background: var(--accent); border-radius: 50%; box-shadow: 0 0 20px rgba(212,145,27,0.6); color: var(--bg-dark); }
+body.edit-active [contenteditable] { outline: 2px dashed var(--accent); background: rgba(212,145,27,0.05); }
+.edit-banner { background: rgba(212,145,27,0.1); border: 2px solid var(--accent); color: var(--accent-light); border-radius: 50px; font-family: 'Space Mono', monospace; }
+.keyboard-hint { font-family: 'Space Mono', monospace; color: rgba(212,145,27,0.45); }
+
+.two-column > div, .kpi-card { border: 1px solid rgba(212,145,27,0.15); padding: var(--content-gap); background: rgba(212,145,27,0.03); }
+.two-column > div:first-child { border-top: 2px solid var(--accent); }
+.two-column > div:last-child  { border-top: 2px solid var(--accent-light); }
+.kpi-card { border-top: 2px solid var(--accent); }

@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>AI Coding — Blueprint variants</title>
+<script src="deck-stage.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+    --serif: 'Fraunces', Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0a0a0a; }
+  deck-stage { font-family: var(--sans); }
+
+  section.slide {
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 90px 110px;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     SHARED — Blueprint A1 visual DNA, parameterised by palette
+     Each .slide sets --bg / --fg / --acc / --acc2 (optional)
+     ════════════════════════════════════════════════════════════ */
+  .slide.themed {
+    background: var(--bg);
+    color: var(--fg);
+    background-image:
+      linear-gradient(var(--grid, rgba(255,255,255,0.04)) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid, rgba(255,255,255,0.04)) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 50px;
+  }
+  .pre {
+    font-family: var(--mono);
+    font-size: 24px;
+    color: var(--acc);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pre--mute { color: var(--fg); opacity: 0.55; }
+  .h {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 76px;
+    letter-spacing: -0.025em;
+    margin: 0 0 28px;
+    line-height: 1.05;
+    max-width: 1500px;
+    color: var(--fg);
+  }
+  .h em { font-style: italic; color: var(--acc); }
+  .sub {
+    font-family: var(--sans);
+    font-size: 26px;
+    color: var(--fg);
+    opacity: 0.78;
+    margin: 0 0 50px;
+    max-width: 1200px;
+    line-height: 1.5;
+  }
+  .foot {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 36px;
+    font-family: var(--mono);
+    font-size: 24px;
+    color: var(--fg);
+    opacity: 0.6;
+    letter-spacing: 0.06em;
+  }
+
+  /* shared node + diagram */
+  .diagram {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: stretch;
+  }
+  .node {
+    border: 1.5px solid var(--fg);
+    padding: 30px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: color-mix(in oklab, var(--bg) 70%, transparent);
+    min-height: 360px;
+  }
+  .node--hi {
+    border-color: var(--acc);
+    background: color-mix(in oklab, var(--acc) 10%, transparent);
+  }
+  .node__tag {
+    font-family: var(--mono);
+    font-size: 24px;
+    letter-spacing: 0.1em;
+    color: var(--acc);
+    text-transform: uppercase;
+  }
+  .node__title {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.05;
+    color: var(--fg);
+    margin: 16px 0 24px;
+    letter-spacing: -0.02em;
+  }
+  .node__list {
+    font-family: var(--mono);
+    font-size: 24px;
+    color: var(--fg);
+    opacity: 0.78;
+    line-height: 1.6;
+    margin: 0; padding: 0; list-style: none;
+  }
+  .arrow {
+    align-self: center;
+    color: var(--acc);
+    font-family: var(--mono);
+    font-size: 36px;
+    padding: 0 14px;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     PALETTES
+     ════════════════════════════════════════════════════════════ */
+  .pal-teal      { --bg:#0F3A3A; --fg:#F0EAD6; --acc:#FCD34D; --grid:rgba(240,234,214,0.04); }
+  .pal-navy      { --bg:#0E1A3A; --fg:#F5E9D8; --acc:#FF9D6E; --grid:rgba(245,233,216,0.04); }
+  .pal-mid       { --bg:#0A2C3A; --fg:#F5E9D8; --acc:#FCD34D; --grid:rgba(245,233,216,0.04); }   /* navy ground + mustard */
+  .pal-tealcot   { --bg:#0F3A3A; --fg:#F5E9D8; --acc:#FF9D6E; --grid:rgba(245,233,216,0.04); }   /* teal ground + apricot */
+  .pal-tokyo     { --bg:#0A0E1F; --fg:#E9F0FF; --acc:#FF2E88; --grid:rgba(255,46,136,0.10); }    /* hot pink fluo */
+  .pal-cyber     { --bg:#06181F; --fg:#E6FFFB; --acc:#00FFC2; --grid:rgba(0,255,194,0.07); }     /* mint fluo */
+  .pal-acid      { --bg:#0F3A3A; --fg:#F0FFF0; --acc:#C8FF3A; --grid:rgba(200,255,58,0.08); }    /* teal + chartreuse */
+  .pal-violet    { --bg:#120A2C; --fg:#EFE6FF; --acc:#B080FF; --grid:rgba(176,128,255,0.08); }   /* deep violet + lilac */
+  .pal-bone      { --bg:#F2EDE0; --fg:#0E1A3A; --acc:#1E44E6; --grid:rgba(14,26,58,0.05); }      /* inverted, cobalt accent */
+
+  /* Tokyo × Violet hybrids */
+  .pal-tv1       { --bg:#0F0824; --fg:#F4E6FF; --acc:#FF2E88; --grid:rgba(255,46,136,0.08); }   /* violet ground, hot pink */
+  .pal-tv2       { --bg:#180A30; --fg:#FFE6F4; --acc:#B080FF; --acc2:#FF2E88; --grid:rgba(176,128,255,0.10); }   /* violet ground, dual lilac+pink */
+  .pal-tv3       { --bg:#1A0822; --fg:#F0E0FF; --acc:#FF6BCB; --grid:rgba(255,107,203,0.08); }  /* magenta-violet ground, fuchsia */
+
+  /* fluo / Tokyo glow on accents */
+  .glow .acc-glow { text-shadow: 0 0 14px color-mix(in oklab, var(--acc) 70%, transparent); }
+  .glow .node--hi { box-shadow: 0 0 0 1px var(--acc), 0 0 60px -12px color-mix(in oklab, var(--acc) 50%, transparent) inset; }
+
+  /* ════════════════════════════════════════════════════════════
+     V3 — vertical stacked rows
+     ════════════════════════════════════════════════════════════ */
+  .diag-rows {
+    flex: 1;
+    display: grid;
+    grid-auto-rows: 1fr;
+    gap: 14px;
+    min-height: 0;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 160px 1fr 1.4fr 1fr;
+    border: 1.5px solid var(--fg);
+    background: rgba(0,0,0,0.18);
+    min-height: 0;
+    overflow: hidden;
+  }
+  .row--hi {
+    border-color: var(--acc);
+    background: color-mix(in oklab, var(--acc) 9%, transparent);
+  }
+  .row > div {
+    padding: 16px 24px;
+    border-right: 1px solid color-mix(in oklab, var(--fg) 25%, transparent);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .row > div:last-child { border-right: none; }
+  .row__num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 0.85;
+    color: var(--acc);
+  }
+  .row__tag {
+    font-family: var(--mono);
+    font-size: 24px;
+    letter-spacing: 0.1em;
+    color: var(--acc);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .row__title {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--fg);
+  }
+  .row__body {
+    font-family: var(--sans);
+    font-size: 24px;
+    color: var(--fg);
+    opacity: 0.78;
+    line-height: 1.35;
+  }
+  .row__meta {
+    font-family: var(--mono);
+    font-size: 24px;
+    color: var(--fg);
+    opacity: 0.7;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     V4 — 2x2 matrix
+     ════════════════════════════════════════════════════════════ */
+  .matrix {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    border: 1.5px solid var(--fg);
+  }
+  .cell {
+    padding: 36px 40px;
+    border-right: 1.5px solid var(--fg);
+    border-bottom: 1.5px solid var(--fg);
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative;
+  }
+  .cell:nth-child(2n) { border-right: none; }
+  .cell:nth-child(n+3) { border-bottom: none; }
+  .cell--hi { background: color-mix(in oklab, var(--acc) 10%, transparent); }
+  .cell__coord {
+    position: absolute;
+    top: 18px; right: 22px;
+    font-family: var(--mono);
+    font-size: 24px;
+    letter-spacing: 0.08em;
+    color: var(--acc);
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  .cell__h {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.0;
+    letter-spacing: -0.025em;
+    color: var(--fg);
+    margin: 32px 0 14px;
+    max-width: 80%;
+  }
+  .cell__h .acc { color: var(--acc); }
+  .cell__body {
+    font-family: var(--sans);
+    font-size: 24px;
+    color: var(--fg);
+    line-height: 1.5;
+    opacity: 0.78;
+    max-width: 92%;
+  }
+  .cell__foot {
+    font-family: var(--mono);
+    font-size: 24px;
+    color: var(--fg);
+    opacity: 0.6;
+    margin-top: 24px;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     V5 — split: list left, big stat right
+     ════════════════════════════════════════════════════════════ */
+  .split {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+  }
+  .split__left {
+    border-right: 1.5px solid color-mix(in oklab, var(--fg) 30%, transparent);
+    padding-right: 60px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .split__list {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 22px;
+  }
+  .split__list li {
+    font-family: var(--sans);
+    font-size: 30px;
+    color: var(--fg);
+    line-height: 1.4;
+    padding-left: 50px;
+    position: relative;
+  }
+  .split__list li::before {
+    content: '→';
+    position: absolute; left: 0; top: 2px;
+    color: var(--acc);
+    font-family: var(--mono);
+    font-weight: 600;
+  }
+  .split__right {
+    display: flex; flex-direction: column; justify-content: center; gap: 24px;
+  }
+  .split__stat {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 320px;
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    color: var(--acc);
+    margin: 0;
+  }
+  .split__stat sup {
+    font-size: 100px;
+    vertical-align: top;
+    margin-left: 8px;
+    opacity: 0.7;
+  }
+  .split__label {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+    max-width: 700px;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     V6 — oversized italic ordinal (section-style with grid)
+     ════════════════════════════════════════════════════════════ */
+  .ord {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .ord__num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 720px;
+    line-height: 0.78;
+    color: var(--acc);
+    margin: 0;
+    letter-spacing: -0.05em;
+  }
+  .ord__num .slash {
+    font-family: var(--sans);
+    font-style: normal;
+    font-weight: 300;
+    color: var(--fg);
+    opacity: 0.3;
+    font-size: 280px;
+  }
+  .ord__copy { border-left: 3px solid var(--acc); padding-left: 48px; }
+  .ord__h {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 110px;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin: 0 0 30px;
+    color: var(--fg);
+  }
+  .ord__h em {
+    font-style: italic;
+    font-family: var(--serif);
+    font-weight: 400;
+    color: var(--acc);
+  }
+  .ord__cap {
+    font-family: var(--mono);
+    font-size: 26px;
+    color: var(--fg);
+    opacity: 0.75;
+    line-height: 1.5;
+    max-width: 700px;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     V7 — numbered manifesto (2-column list)
+     ════════════════════════════════════════════════════════════ */
+  .manifesto {
+    flex: 1;
+    list-style: none;
+    margin: 0; padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 80px;
+    align-content: start;
+  }
+  .manifesto li {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 24px;
+    padding-top: 20px;
+    border-top: 1.5px solid color-mix(in oklab, var(--fg) 25%, transparent);
+  }
+  .manifesto__n {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 72px;
+    line-height: 0.85;
+    color: var(--acc);
+  }
+  .manifesto__t {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.15;
+    color: var(--fg);
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
+  }
+  .manifesto__d {
+    font-family: var(--mono);
+    font-size: 24px;
+    color: var(--fg);
+    opacity: 0.7;
+    line-height: 1.5;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     V8 — code + commentary (Tokyo)
+     ════════════════════════════════════════════════════════════ */
+  .codecol {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 60px;
+    align-items: stretch;
+  }
+  .codecol__copy {
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .codecol__bullets {
+    list-style: none; margin: 30px 0 0; padding: 0;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .codecol__bullets li {
+    font-family: var(--mono);
+    font-size: 24px;
+    color: var(--fg);
+    padding-left: 38px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .codecol__bullets li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--acc);
+  }
+  .codecol__code {
+    border: 1.5px solid var(--acc);
+    padding: 60px 44px 44px;
+    font-family: var(--mono);
+    font-size: 24px;
+    line-height: 1.55;
+    color: var(--fg);
+    position: relative;
+    background: rgba(0,0,0,0.35);
+    box-shadow: 0 0 80px -20px color-mix(in oklab, var(--acc) 50%, transparent) inset;
+  }
+  .codecol__code::before {
+    content: '';
+    position: absolute;
+    top: 24px; left: 24px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--acc);
+    box-shadow: 24px 0 0 color-mix(in oklab, var(--acc) 50%, var(--fg) 50%),
+                48px 0 0 color-mix(in oklab, var(--fg) 60%, transparent);
+  }
+  .codecol__code .com { color: var(--acc); opacity: 0.55; font-style: italic; }
+  .codecol__code .kw  { color: var(--acc); }
+  .codecol__code .str { color: var(--fg); }
+  .codecol__code .fn  { color: color-mix(in oklab, var(--acc) 60%, var(--fg) 40%); }
+  .codecol__code .pad { display: block; height: 18px; }
+
+  /* ════════════════════════════════════════════════════════════
+     V9 — bone (inverted) closing — cobalt on bone
+     ════════════════════════════════════════════════════════════ */
+  .closing {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: stretch;
+  }
+  .closing__quote {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 110px;
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    color: var(--fg);
+    margin: 0;
+    align-self: center;
+  }
+  .closing__quote .mark { color: var(--acc); font-style: italic; }
+  .closing__quote em { font-style: italic; color: var(--acc); }
+  .closing__side {
+    border-left: 2px solid var(--fg);
+    padding-left: 50px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .closing__num {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 360px;
+    line-height: 0.78;
+    color: var(--acc);
+    margin: 0;
+    letter-spacing: -0.06em;
+  }
+  .closing__num small {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    vertical-align: top;
+    color: var(--fg);
+    opacity: 0.55;
+    margin-left: 16px;
+  }
+  .closing__cap {
+    font-family: var(--mono);
+    font-size: 24px;
+    color: var(--fg);
+    opacity: 0.7;
+    line-height: 1.5;
+    max-width: 540px;
+  }
+
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- 01 — A1 reference: Teal & Mustard / 3-step pipeline -->
+  <section class="slide themed pal-teal" data-screen-label="01 Pipeline — Teal & Mustard (A1)">
+    <div class="head">
+      <div class="pre">§ 01 — Pipeline · ref A1</div>
+      <div class="pre pre--mute">01 / 10</div>
+    </div>
+    <h2 class="h">A working loop is <em>three</em> moves,<br/>repeated until the suite goes green.</h2>
+    <p class="sub">The shape of the loop matters more than the model you put inside it. Each box is a contract; each arrow is a checkpoint where a human can intervene.</p>
+    <div class="diagram">
+      <div class="node"><div><div class="node__tag">01 · Frame</div><div class="node__title">Pin the goal &amp; constraints</div></div><ul class="node__list"><li>— acceptance test</li><li>— scope budget</li><li>— prior context</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="node node--hi"><div><div class="node__tag">02 · Generate</div><div class="node__title">Smallest credible diff</div></div><ul class="node__list"><li>— one file ideally</li><li>— spec-first</li><li>— annotated reasoning</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="node"><div><div class="node__tag">03 · Verify</div><div class="node__title">Run, read, then merge</div></div><ul class="node__list"><li>— tests + types</li><li>— manual diff read</li><li>— revert if unsure</li></ul></div>
+    </div>
+    <div class="foot"><div>↳ skip a step and you re-pay it in review</div><div>fig. 1.1</div></div>
+  </section>
+
+  <!-- 02 — Navy ground + Apricot accent / pipeline restated in B1 colors -->
+  <section class="slide themed pal-navy" data-screen-label="02 Pipeline — Navy & Apricot">
+    <div class="head">
+      <div class="pre">§ 02 — Pipeline · navy palette</div>
+      <div class="pre pre--mute">02 / 10</div>
+    </div>
+    <h2 class="h">Same loop, <em>different room.</em></h2>
+    <p class="sub">A1's pipeline rendered in B1's colours — navy ground, cream foreground, apricot accent. Use this when the slide sits next to a section divider.</p>
+    <div class="diagram">
+      <div class="node"><div><div class="node__tag">01 · Frame</div><div class="node__title">Define the contract</div></div><ul class="node__list"><li>— acceptance test</li><li>— scope budget</li><li>— prior context</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="node node--hi"><div><div class="node__tag">02 · Generate</div><div class="node__title">Smallest credible diff</div></div><ul class="node__list"><li>— one file ideally</li><li>— spec-first</li><li>— annotated reasoning</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="node"><div><div class="node__tag">03 · Verify</div><div class="node__title">Run, read, then merge</div></div><ul class="node__list"><li>— tests + types</li><li>— manual diff read</li><li>— revert if unsure</li></ul></div>
+    </div>
+    <div class="foot"><div>↳ palette swap, layout untouched</div><div>fig. 2.1</div></div>
+  </section>
+
+  <!-- 03 — Cross palette: navy ground + mustard accent -->
+  <section class="slide themed pal-mid" data-screen-label="03 Pipeline — Navy & Mustard">
+    <div class="head">
+      <div class="pre">§ 03 — Pipeline · cross palette</div>
+      <div class="pre pre--mute">03 / 10</div>
+    </div>
+    <h2 class="h">Cross-pollinated: <em>navy ground,</em><br/>mustard accent.</h2>
+    <p class="sub">A1 and B1 share a recipe — swap the accent and ground independently and you get a third option that still feels like the deck.</p>
+    <div class="diagram">
+      <div class="node"><div><div class="node__tag">i · Plan</div><div class="node__title">Choose the smallest scope</div></div><ul class="node__list"><li>— what tests cover it</li><li>— what context is needed</li><li>— what's explicitly out</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="node node--hi"><div><div class="node__tag">ii · Draft</div><div class="node__title">Let the model propose</div></div><ul class="node__list"><li>— diff format only</li><li>— signature locked</li><li>— reasoning attached</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="node"><div><div class="node__tag">iii · Land</div><div class="node__title">Read, run, decide</div></div><ul class="node__list"><li>— suite green</li><li>— diff understood</li><li>— or revert clean</li></ul></div>
+    </div>
+    <div class="foot"><div>↳ swap accent before swapping content</div><div>fig. 3.1</div></div>
+  </section>
+
+  <!-- 06 — Tokyo / fluo pink — split with stat -->
+  <section class="slide themed pal-tokyo glow" data-screen-label="06 Stat — Tokyo neon">
+    <div class="head">
+      <div class="pre acc-glow">§ 06 — Cycle time · tokyo</div>
+      <div class="pre pre--mute">06 / 10</div>
+    </div>
+    <h2 class="h">The loop pays for itself <em>in the first week.</em></h2>
+    <p class="sub">Same A1 grammar — grid, hairlines, mono chrome — pushed into a high-saturation neon palette. Use sparingly: one fluo slide per deck, max.</p>
+    <div class="split">
+      <div class="split__left">
+        <ul class="split__list">
+          <li>Median diff size drops 5×</li>
+          <li>Time-to-first-merge cut in half</li>
+          <li>Revert rate falls below 2%</li>
+          <li>Onboarding to first PR: 1 day</li>
+        </ul>
+        <div class="foot" style="margin: 0;"><div>↳ measured across 14 teams · Q1</div><div>fig. 6.1</div></div>
+      </div>
+      <div class="split__right">
+        <h3 class="split__stat acc-glow">62<sup>%</sup></h3>
+        <p class="split__label">fewer rollbacks once the gate runs<br/>before the merge button.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 — Cyber mint fluo — code & commentary -->
+  <section class="slide themed pal-cyber glow" data-screen-label="07 Code — Cyber mint">
+    <div class="head">
+      <div class="pre acc-glow">§ 07 — Spec-first · cyber</div>
+      <div class="pre pre--mute">07 / 10</div>
+    </div>
+    <h2 class="h">Lock the <em>signature</em> first.<br/>Let the body negotiate.</h2>
+    <div class="codecol">
+      <div class="codecol__copy">
+        <p class="sub" style="margin: 0;">A spec-first prompt pins the surface area. The model can be wrong about the implementation; it can't be wrong about the shape, because the shape is already typed.</p>
+        <ul class="codecol__bullets">
+          <li>Pin types, return shapes, error cases</li>
+          <li>Show one canonical call site</li>
+          <li>Require tests against the spec</li>
+          <li>Iterate body, not signature</li>
+        </ul>
+      </div>
+      <div class="codecol__code">
+        <span class="com">// 1. Lock the contract.</span><br/>
+        <span class="kw">type</span> <span class="fn">Retrieval</span> = {<br/>
+        &nbsp;&nbsp;query: <span class="kw">string</span>, k: <span class="kw">number</span>,<br/>
+        &nbsp;&nbsp;rerank: <span class="kw">boolean</span><br/>
+        };<br/>
+        <span class="pad"></span>
+        <span class="com">// 2. Model fills the body.</span><br/>
+        <span class="kw">async function</span> <span class="fn">retrieve</span>(r):<br/>
+        &nbsp;&nbsp;<span class="kw">Promise</span>&lt;<span class="fn">Doc</span>[]&gt; {<br/>
+        &nbsp;&nbsp;<span class="com">// @model: don't change sig</span><br/>
+        }<br/>
+        <span class="pad"></span>
+        <span class="com">// 3. Tests assert shape.</span><br/>
+        <span class="kw">expect</span>(res).<span class="fn">toHaveLength</span>(<span class="str">5</span>);
+      </div>
+    </div>
+    <div class="foot"><div>↳ the typer is the cheapest reviewer you have</div><div>fig. 7.1</div></div>
+  </section>
+
+  <!-- 08 — Acid chartreuse on teal — manifesto -->
+  <section class="slide themed pal-acid" data-screen-label="08 Manifesto — Acid chartreuse">
+    <div class="head">
+      <div class="pre">§ 08 — Ten rules · acid</div>
+      <div class="pre pre--mute">08 / 10</div>
+    </div>
+    <h2 class="h">Ten rules of the <em>house.</em></h2>
+    <ol class="manifesto">
+      <li><div class="manifesto__n">i.</div><div><div class="manifesto__t">Pin the contract first.</div><div class="manifesto__d">Types and tests before tokens.</div></div></li>
+      <li><div class="manifesto__n">ii.</div><div><div class="manifesto__t">Diff, not prose.</div><div class="manifesto__d">A patch is reviewable; a paragraph isn't.</div></div></li>
+      <li><div class="manifesto__n">iii.</div><div><div class="manifesto__t">One file ideally.</div><div class="manifesto__d">Bigger blast radius needs more proof.</div></div></li>
+      <li><div class="manifesto__n">iv.</div><div><div class="manifesto__t">Revert is free.</div><div class="manifesto__d">Use it before debugging the model.</div></div></li>
+      <li><div class="manifesto__n">v.</div><div><div class="manifesto__t">Curate context.</div><div class="manifesto__d">Auto-attach is a smell, not a feature.</div></div></li>
+      <li><div class="manifesto__n">vi.</div><div><div class="manifesto__t">Read every diff.</div><div class="manifesto__d">If you can't, the diff is too large.</div></div></li>
+      <li><div class="manifesto__n">vii.</div><div><div class="manifesto__t">Tests gate, types catch.</div><div class="manifesto__d">Both run on every turn, no exceptions.</div></div></li>
+      <li><div class="manifesto__n">viii.</div><div><div class="manifesto__t">Memo what worked.</div><div class="manifesto__d">A journal beats a clever prompt.</div></div></li>
+      <li><div class="manifesto__n">ix.</div><div><div class="manifesto__t">Ship the loop, not the prompt.</div><div class="manifesto__d">Prompts age; loops compound.</div></div></li>
+      <li><div class="manifesto__n">x.</div><div><div class="manifesto__t">When in doubt, by hand.</div><div class="manifesto__d">The model is an amplifier, not a substitute.</div></div></li>
+    </ol>
+  </section>
+
+  <!-- 09 — Violet/lilac — oversized italic ordinal -->
+  <section class="slide themed pal-violet" data-screen-label="09 Ordinal — Violet & Lilac">
+    <div class="head">
+      <div class="pre">§ 09 — Section · violet</div>
+      <div class="pre pre--mute">09 / 10</div>
+    </div>
+    <div class="ord">
+      <div class="ord__num">3<span class="slash">/</span><span style="font-size:240px;">4</span></div>
+      <div class="ord__copy">
+        <h3 class="ord__h">The diff is the <em>unit</em><br/>of trust.</h3>
+        <p class="ord__cap">Why a small, reviewable patch beats a large, well-reasoned monologue — and how to make the model produce the former, every time.</p>
+      </div>
+    </div>
+    <div class="foot"><div>↳ § 3.1 — 3.6</div><div>chapter break</div></div>
+  </section>
+
+  <!-- 08 — Tokyo × Violet hybrid: hot pink on violet ground · pipeline -->
+  <section class="slide themed pal-tv1 glow" data-screen-label="08 Hybrid — Violet ground + Pink fluo">
+    <div class="head">
+      <div class="pre acc-glow">§ 08 — Hybrid · violet × tokyo</div>
+      <div class="pre pre--mute">08 / 10</div>
+    </div>
+    <h2 class="h">Deep violet ground, <em>hot-pink</em> punch.</h2>
+    <p class="sub">The Tokyo accent dropped onto the violet ground — keeps the editorial weight of the violet palette, gains the urgency of fluo pink. Reserve for the slide that has to land.</p>
+    <div class="diagram">
+      <div class="node"><div><div class="node__tag">01 · Frame</div><div class="node__title">Pin the contract</div></div><ul class="node__list"><li>— acceptance test</li><li>— scope budget</li><li>— prior context</li></ul></div>
+      <div class="arrow acc-glow">→</div>
+      <div class="node node--hi"><div><div class="node__tag">02 · Generate</div><div class="node__title">Smallest credible diff</div></div><ul class="node__list"><li>— one file ideally</li><li>— spec-first</li><li>— annotated reasoning</li></ul></div>
+      <div class="arrow acc-glow">→</div>
+      <div class="node"><div><div class="node__tag">03 · Verify</div><div class="node__title">Run, read, then merge</div></div><ul class="node__list"><li>— tests + types</li><li>— manual diff read</li><li>— revert if unsure</li></ul></div>
+    </div>
+    <div class="foot"><div>↳ violet carries the room, pink draws the eye</div><div>fig. 8.1</div></div>
+  </section>
+
+  <!-- 09 — Tokyo × Violet dual-accent: lilac + pink, ordinal layout -->
+  <section class="slide themed pal-tv2 glow" data-screen-label="09 Hybrid — Lilac + Pink dual">
+    <div class="head">
+      <div class="pre acc-glow">§ 09 — Hybrid · dual accent</div>
+      <div class="pre pre--mute">09 / 10</div>
+    </div>
+    <div class="ord">
+      <div class="ord__num acc-glow" style="color:#FF2E88;">3<span class="slash" style="color:#B080FF;opacity:0.6;">/</span><span style="font-size:240px;color:#B080FF;">4</span></div>
+      <div class="ord__copy" style="border-left-color:#B080FF;">
+        <h3 class="ord__h">The diff is the <em style="color:#FF2E88;">unit</em><br/>of trust.</h3>
+        <p class="ord__cap">Two accents, one palette — lilac structures, pink emphasises. Use the dual treatment when a slide has both a section role and a key takeaway.</p>
+      </div>
+    </div>
+    <div class="foot"><div>↳ lilac is structural · pink is editorial</div><div>chapter break</div></div>
+  </section>
+
+  <!-- 10 — Tokyo × Violet fuchsia: magenta-violet ground · 10-rule manifesto -->
+  <section class="slide themed pal-tv3 glow" data-screen-label="10 Hybrid — Magenta-violet + Fuchsia">
+    <div class="head">
+      <div class="pre acc-glow">§ 10 — Hybrid · fuchsia</div>
+      <div class="pre pre--mute">10 / 10</div>
+    </div>
+    <h2 class="h">Ten rules, <em>louder.</em></h2>
+    <ol class="manifesto">
+      <li><div class="manifesto__n">i.</div><div><div class="manifesto__t">Pin the contract first.</div><div class="manifesto__d">Types and tests before tokens.</div></div></li>
+      <li><div class="manifesto__n">ii.</div><div><div class="manifesto__t">Diff, not prose.</div><div class="manifesto__d">A patch is reviewable; a paragraph isn't.</div></div></li>
+      <li><div class="manifesto__n">iii.</div><div><div class="manifesto__t">One file ideally.</div><div class="manifesto__d">Bigger blast radius needs more proof.</div></div></li>
+      <li><div class="manifesto__n">iv.</div><div><div class="manifesto__t">Revert is free.</div><div class="manifesto__d">Use it before debugging the model.</div></div></li>
+      <li><div class="manifesto__n">v.</div><div><div class="manifesto__t">Curate context.</div><div class="manifesto__d">Auto-attach is a smell, not a feature.</div></div></li>
+      <li><div class="manifesto__n">vi.</div><div><div class="manifesto__t">Read every diff.</div><div class="manifesto__d">If you can't, the diff is too large.</div></div></li>
+      <li><div class="manifesto__n">vii.</div><div><div class="manifesto__t">Tests gate, types catch.</div><div class="manifesto__d">Both run on every turn, no exceptions.</div></div></li>
+      <li><div class="manifesto__n">viii.</div><div><div class="manifesto__t">Memo what worked.</div><div class="manifesto__d">A journal beats a clever prompt.</div></div></li>
+      <li><div class="manifesto__n">ix.</div><div><div class="manifesto__t">Ship the loop.</div><div class="manifesto__d">Prompts age; loops compound.</div></div></li>
+      <li><div class="manifesto__n">x.</div><div><div class="manifesto__t">When in doubt, by hand.</div><div class="manifesto__d">The model amplifies, never substitutes.</div></div></li>
+    </ol>
+  </section>
+
+</deck-stage>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+# ============================================================
+# Azure DevOps Repository & Git Fundamentals
+# Presentation content — edit this file to change the slides.
+# Schema: slide-schema.md
+# ============================================================
+
+meta:
+  title: "Azure DevOps Repository & Git Fundamentals"
+  logo: assets/logo-small.png
+  theme: mission-control          # default theme on first load
+  themes:
+    - launch-pad
+    - root-shell
+    - grid-zero
+    - mission-control
+  editing: true
+
+slides:
+
+  # ── 1. Title ────────────────────────────────────────────────
+  - layout: title
+    logo: assets/logo-small.png
+    h1: "Azure DevOps\nRepository"
+    subtitle: Mastering Git Fundamentals
+    tagline: A 20-minute technical deep-dive into version control
+
+  # ── 2. What is Git ──────────────────────────────────────────
+  - layout: bullets
+    h2: What is Git?
+    items:
+      - Distributed Version Control System (DVCS)
+      - Tracks changes to your codebase over time
+      - Foundation of collaborative development
+      - "Open source & widely adopted"
+      - Core to Azure DevOps Repositories
+
+  # ── 3. Distributed architecture ─────────────────────────────
+  - layout: two-column
+    h2: Git is Distributed
+    columns:
+      - h3: Centralized (SVN)
+        items:
+          - Single central server
+          - Limited offline work
+          - "Server failure = blocker"
+      - h3: "Distributed (Git)"
+        items:
+          - Full copy on each machine
+          - Work offline freely
+          - "Resilient & independent"
+
+  # ── 4. Core concepts ────────────────────────────────────────
+  - layout: bullets-strong
+    h2: Core Git Concepts
+    items:
+      - term: Commit
+        desc: A snapshot of your code at a point in time
+      - term: Branch
+        desc: A parallel line of development
+      - term: Tag
+        desc: A named reference to a specific commit
+      - term: Remote
+        desc: A version of your repository on a server
+      - term: HEAD
+        desc: Points to the current commit
+
+  # ── 5. Commits ──────────────────────────────────────────────
+  - layout: bullets-note
+    h2: Understanding Commits
+    items:
+      - Immutable snapshots of changes
+      - "Contains: code, metadata, author, timestamp"
+      - "Identified by SHA-1 hash (40 hex characters)"
+      - Linked together in a chain (history)
+      - Enable complete project history tracking
+    note: "💡 Each commit is self-contained and reversible"
+
+  # ── 6. Branches ─────────────────────────────────────────────
+  - layout: bullets-note
+    h2: Branches Deep Dive
+    items:
+      - Independent lines of development
+      - Cheap to create and switch
+      - Enable parallel work streams
+      - "Example: feature/login, bugfix/auth, hotfix/db"
+      - "master/main = production-ready code"
+    note: "🔀 Branch → Work → Merge workflow"
+
+  # ── 7. Tags ─────────────────────────────────────────────────
+  - layout: bullets-badge
+    h2: "Tags: Marking Milestones"
+    items:
+      - "Lightweight: just a reference to a commit"
+      - "Annotated: includes author, date, message"
+      - "Used for releases: v1.0.0, v2.1.3"
+      - Semantic versioning convention
+      - "Enable reproducible builds & deployments"
+    badge: git tag v1.0.0
+
+  # ── 8. Merge strategies overview ────────────────────────────
+  - layout: bullets-strong
+    h2: Merge Strategies
+    items:
+      - term: Fast Forward
+        desc: Linear history, no merge commit
+      - term: Merge Commit
+        desc: Creates a commit linking two branches
+      - term: Rebase
+        desc: Rewrites history, applies commits on top
+      - term: Squash
+        desc: Combines all commits into one
+      - term: Cherry Pick
+        desc: Apply specific commits to another branch
+
+  # ── 9. Fast forward ─────────────────────────────────────────
+  - layout: bullets-badge-note
+    h2: Fast Forward Merge
+    items:
+      - "Occurs when branch hasn't diverged from main"
+      - No merge commit created
+      - Linear, clean history
+      - "Best for: quick feature branches"
+    badge: git merge feature-branch
+    note: "Result: main pointer moves forward to feature commit"
+    note_size: small
+
+  # ── 10. Merge vs Rebase ─────────────────────────────────────
+  - layout: two-column
+    h2: Merge vs Rebase
+    columns:
+      - h3: Merge Commit
+        items:
+          - Preserves history
+          - Shows integration points
+          - Non-destructive
+      - h3: Rebase
+        items:
+          - Linear history
+          - Cleaner log
+          - "Rewrites commits (be careful!)"
+    note: "⚠️ Never rebase public branches"
+    note_bold: true
+
+  # ── 11. Squash ──────────────────────────────────────────────
+  - layout: bullets-badge
+    h2: "Squash: Combine Commits"
+    items:
+      - Merge multiple commits into one
+      - Cleans up messy branch history
+      - Creates single, coherent commit
+      - Useful before merging to main
+      - "Example: 5 WIP commits → 1 clean feature commit"
+    badge: git merge --squash feature
+
+  # ── 12. Cherry pick ─────────────────────────────────────────
+  - layout: bullets-badge
+    h2: "Cherry Pick: Apply Selective Commits"
+    items:
+      - Copy specific commits from one branch to another
+      - "Useful for backports & hotfixes"
+      - "Example: copy bug fix from main to release-1.0"
+      - Creates new commits with same changes
+      - Use sparingly (can create duplicate commits)
+    badge: git cherry-pick abc123
+
+  # ── 13. Best practices ──────────────────────────────────────
+  - layout: bullets-note
+    h2: Git Best Practices
+    items:
+      - Write clear, descriptive commit messages
+      - Commit often with logical, atomic changes
+      - Use branches for all work (never commit to main)
+      - Pull before push to avoid conflicts
+      - Review code before merging (Pull Requests)
+    note: "✅ Consistent workflows = team success"
+    note_bold: true
+
+  # ── 14. Closing ─────────────────────────────────────────────
+  - layout: title-closing
+    logo: assets/logo-small.png
+    h1: "You're Now\nGit Ready!"
+    items:
+      - "Azure DevOps = Git + CI/CD + Agile"
+      - Master these concepts for team success
+      - Practice makes perfect
+    tagline: Questions?

@@ -1,0 +1,288 @@
+meta:
+  title: "Documentation Is the King"
+  subtitle: "How to Rule Your Agents"
+  tagline: "AI Heroes 2026"
+  theme: root-shell
+  editing: false
+
+# SKELETON — every "TODO:" marks content the speaker must write or confirm.
+# Images: none referenced yet. Put assets in slides/assets/talk/ before adding image fields.
+# Outline and slide-id map: _docs/talk/outline.md
+
+slides:
+
+  # ── 1. Title ────────────────────────────────────────────────────
+  - layout: title
+    id: cover
+    h1: "Documentation Is the King"
+    subtitle: "Marco De Nittis - Architect @ Synesthesia"
+    tagline: "How to Rule Your Agents"
+
+  # ── 2. Hook ─────────────────────────────────────────────────────
+  - layout: quote
+    id: hook
+    quote: "TODO: opening line — e.g. 'Your agent read every word you wrote. Did you?'"
+    attribution: "TODO: attribution or remove"
+
+  # ── 3. Agenda ───────────────────────────────────────────────────
+  - layout: steps
+    id: agenda
+    h2: "Today"
+    steps:
+      - h3: "1. The old deal"
+        text: "Docs as the bottleneck"
+      - h3: "2. The flip"
+        text: "Agents act on what is written"
+      - h3: "3. The virtuous circle"
+        text: "Better docs, better output, cheaper upkeep"
+      - h3: "4. Self-organizing docs"
+        text: "A library, not a bloated instruction file"
+      - h3: "5. Practical tips"
+        text: "What to do on Monday"
+
+  # ══════════════════════════════════════════════════════════════
+  # ACT 1 — Docs used to be the bottleneck
+  # ══════════════════════════════════════════════════════════════
+
+  # ── 4. Act 1 divider ────────────────────────────────────────────
+  - layout: section-divider
+    id: act1-old-deal
+    h2: "The old deal"
+    tagline: "Written late, read rarely, stale by the next release"
+
+  # ── 5. Why docs slowed teams down ───────────────────────────────
+  - layout: bullets-strong
+    id: docs-bottleneck
+    h2: "Documentation, before agents"
+    items:
+      - term: "Written late"
+        desc: "TODO: after the code, if at all"
+      - term: "Read rarely"
+        desc: "TODO: humans ask a colleague instead"
+      - term: "Stale fast"
+        desc: "TODO: wrong by the next release, and nobody notices"
+      - term: "Low ROI"
+        desc: "TODO: cost now, benefit maybe, for someone else"
+
+  # ══════════════════════════════════════════════════════════════
+  # ACT 2 — Agents act on what is written
+  # ══════════════════════════════════════════════════════════════
+
+  # ── 6. Act 2 divider ────────────────────────────────────────────
+  - layout: section-divider
+    id: act2-flip
+    h2: "The flip"
+    tagline: "Agents act on what is written"
+
+  # ── 7. An agent arrives with no memory ──────────────────────────
+  - layout: quote
+    id: no-memory
+    quote: "An agent arrives with no memory. In the first minute of a task, everything it knows about this project comes from files."
+    attribution: "TODO: confirm wording — from splitwise-lite docs-guidelines"
+
+  # ── 8. Human reader vs agent reader ─────────────────────────────
+  - layout: two-column
+    id: human-vs-agent
+    h2: "Two readers, one library"
+    columns:
+      - h3: "Human reader"
+        items:
+          - "TODO: asks a colleague when docs are missing"
+          - "TODO: spots a stale page and ignores it"
+          - "TODO: reads once, remembers"
+      - h3: "Agent reader"
+        items:
+          - "TODO: no one to ask — fills gaps by inventing"
+          - "TODO: believes a stale page"
+          - "TODO: reads every session, from zero"
+    note: "A stale document is worse than a missing one. TODO: confirm as key line"
+
+  # ── 9. Docs now decide speed and quality ───────────────────────
+  - layout: diagram
+    id: docs-drive-output
+    h2: "Docs decide how fast and how well"
+    graph: |
+      graph LR
+        D[Docs] --> C[Agent context]
+        C --> O[Agent output]
+        O --> Q{Quality<br>and speed}
+    note: "TODO: one concrete before/after example from a real project"
+
+  # ══════════════════════════════════════════════════════════════
+  # ACT 3 — The virtuous circle
+  # ══════════════════════════════════════════════════════════════
+
+  # ── 10. Act 3 divider ───────────────────────────────────────────
+  - layout: section-divider
+    id: act3-circle
+    h2: "The virtuous circle"
+    tagline: "From cost to driver"
+
+  # ── 11. The circle ──────────────────────────────────────────────
+  - layout: diagram
+    id: virtuous-circle
+    h2: "Better docs, better output, cheaper upkeep"
+    graph: |
+      graph LR
+        A[Better docs] --> B[Better agent output]
+        B --> C[Agent updates docs<br>in the same change]
+        C --> D[Cheaper upkeep]
+        D --> A
+    note: "TODO: explain who closes the loop — the agent that made the change"
+
+  # ── 12. Practices that keep the circle turning ──────────────────
+  - layout: bullets-note
+    id: circle-practices
+    h2: "What keeps it turning"
+    items:
+      - "Update the doc in the same session and the same commit"
+      - "One fact, one owning document — everything else links"
+      - "Present tense: describe what holds today"
+      - "TODO: fourth practice or remove"
+    note: "TODO: the authoring duty in one sentence"
+
+  # ── 13. Evidence ────────────────────────────────────────────────
+  - layout: kpis
+    id: circle-evidence
+    h2: "TODO: what changed in practice"
+    items:
+      - value: "TODO"
+        label: "TODO: e.g. rework per feature"
+      - value: "TODO"
+        label: "TODO: e.g. tokens per task"
+      - value: "TODO"
+        label: "TODO: e.g. docs drift found by lint"
+    note: "TODO: source / project — or drop the slide if no data"
+
+  # ══════════════════════════════════════════════════════════════
+  # ACT 4 — Self-organizing docs vs bloated instruction files
+  # ══════════════════════════════════════════════════════════════
+
+  # ── 14. Act 4 divider ───────────────────────────────────────────
+  - layout: section-divider
+    id: act4-self-organizing
+    h2: "Self-organizing docs"
+    tagline: "Not one bloated instruction file"
+
+  # ── 15. Bloated file vs library ─────────────────────────────────
+  - layout: two-column
+    id: bloated-vs-library
+    h2: "Instruction file vs library"
+    columns:
+      - h3: "Bloated instruction file"
+        items:
+          - "TODO: everything in one file, loaded every time"
+          - "TODO: rules contradict each other"
+          - "TODO: context fills with what the task does not need"
+      - h3: "Self-organizing library"
+        items:
+          - "TODO: a short entry point that is a map"
+          - "TODO: read two or three documents, no more"
+          - "TODO: agents keep it in order"
+
+  # ── 16. AGENTS.md as a map ──────────────────────────────────────
+  - layout: code
+    id: agents-map
+    h2: "The entry point is a map"
+    code: |
+      ## Where to look
+      | For                          | Read                       |
+      |------------------------------|----------------------------|
+      | Any task: the map of docs    | _docs/Home.md              |
+      | The meaning of a term        | _docs/product/glossary.md  |
+      | Open questions               | _docs/backlog.md           |
+      | Your duty after a change     | _docs/_meta/authoring.md   |
+    note: "TODO: trimmed from splitwise-lite AGENTS.md — confirm excerpt"
+
+  # ── 17. Building blocks ─────────────────────────────────────────
+  - layout: feature-grid
+    id: building-blocks
+    h2: "The building blocks"
+    cards:
+      - icon: "🗺️"
+        h3: "Home map"
+        text: "TODO: catalogue + who owns which fact"
+      - icon: "🏷️"
+        h3: "Frontmatter"
+        text: "TODO: summary, read_when, status, verified"
+      - icon: "📚"
+        h3: "Librarian agent"
+        text: "TODO: the only one that moves or splits docs"
+      - icon: "✍️"
+        h3: "STE writing"
+        text: "TODO: Simplified Technical English for agent-facing text"
+      - icon: "📖"
+        h3: "Glossary"
+        text: "TODO: one word, one meaning"
+      - icon: "🔁"
+        h3: "Phases"
+        text: "TODO: the rules in force change with the project phase"
+
+  # ── 18. Frontmatter example ─────────────────────────────────────
+  - layout: two-column
+    id: frontmatter-example
+    h2: "Every doc tells the agent when to read it"
+    columns:
+      - items:
+          - "summary: what it is, in one line"
+          - "read_when: the task that needs it"
+          - "verified: when someone last checked it"
+          - "TODO: talking point on generated catalogue"
+      - code: |
+          ---
+          id: meta-authoring
+          title: Writing and updating docs
+          status: current
+          summary: The duty of every agent ...
+          read_when: a change touched a claim
+          verified: 2026-11-05
+          ---
+        language: yaml
+
+  # ══════════════════════════════════════════════════════════════
+  # ACT 5 — Practical tips
+  # ══════════════════════════════════════════════════════════════
+
+  # ── 19. Act 5 divider ───────────────────────────────────────────
+  - layout: section-divider
+    id: act5-tips
+    h2: "Practical tips"
+    tagline: "For humans and agents"
+
+  # ── 20. Tips ────────────────────────────────────────────────────
+  - layout: bullets-strong
+    id: tips
+    h2: "Start on Monday"
+    items:
+      - term: "TODO: tip 1"
+        desc: "TODO: e.g. turn your instruction file into a map"
+      - term: "TODO: tip 2"
+        desc: "TODO: e.g. add read_when to every doc"
+      - term: "TODO: tip 3"
+        desc: "TODO: e.g. make the doc update part of done"
+      - term: "TODO: tip 4"
+        desc: "TODO: e.g. lint the docs like code"
+      - term: "TODO: tip 5"
+        desc: "TODO: e.g. let one agent own the structure"
+
+  # ── 21. Tooling ─────────────────────────────────────────────────
+  - layout: bullets-badge-note
+    id: tooling
+    h2: "Read less, read the right thing"
+    items:
+      - "TODO: peek before you read — sizes and tokens per file"
+      - "TODO: find docs touched by a change"
+      - "TODO: lint docs before commit"
+    badge: "mise run digest --summary _docs"
+    note: "TODO: decide whether to show live or as screenshot"
+    note_size: small
+
+  # ── 22. Closing ─────────────────────────────────────────────────
+  - layout: title-closing
+    id: closing
+    h1: "Documentation Is the King"
+    items:
+      - "TODO: key message 1 — agents act on what is written"
+      - "TODO: key message 2 — close the loop in the same change"
+      - "TODO: key message 3 — a map, not a manual"
+    tagline: "TODO: Questions? + contacts / repo link"

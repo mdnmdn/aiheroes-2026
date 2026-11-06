@@ -1,0 +1,334 @@
+meta:
+  title: "Complete Layout Showcase"
+  logo: assets/logo-small.png
+  theme: mission-control
+  editing: true
+
+slides:
+
+  # ══════════════════════════════════════════════════════
+  # 1. TITLE LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: title
+    logo: assets/logo-small.png
+    h1: "Complete Layout Showcase"
+    subtitle: "All 17 Layouts + Demo"
+    tagline: "Visual reference guide for the presentation system"
+
+  # ══════════════════════════════════════════════════════
+  # 2. BULLETS LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: bullets
+    h2: "Simple Bullet List"
+    items:
+      - "This is the most basic layout"
+      - "Just a heading and bullet points"
+      - "No extra formatting or styling"
+      - "Perfect for content slides"
+      - "Clean and minimal"
+
+  # ══════════════════════════════════════════════════════
+  # 3. BULLETS-NOTE LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: bullets-note
+    h2: "Bullets with Note"
+    items:
+      - "Bullet points as main content"
+      - "Important information here"
+      - "Keep audience focused"
+      - "Three to five bullets ideal"
+    note: "💡 The note appears at the bottom for emphasis"
+
+  # ══════════════════════════════════════════════════════
+  # 4. BULLETS-BADGE LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: bullets-badge
+    h2: "Bullets with Command Badge"
+    items:
+      - "Include a command or keyword"
+      - "Useful for technical content"
+      - "Shows a code snippet"
+      - "Single-line reference"
+    badge: "git commit -m 'Your message'"
+
+  # ══════════════════════════════════════════════════════
+  # 5. BULLETS-BADGE-NOTE LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: bullets-badge-note
+    h2: "Bullets + Badge + Note"
+    items:
+      - "Combines three elements"
+      - "Maximum information density"
+      - "Use sparingly"
+    badge: "npm install package"
+    note: "Keep it readable — don't overload the slide"
+    note_size: small
+
+  # ══════════════════════════════════════════════════════
+  # 6. BULLETS-STRONG LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: bullets-strong
+    h2: "Term: Description Pairs"
+    items:
+      - term: "Feature"
+        desc: "A capability or characteristic"
+      - term: "Benefit"
+        desc: "The value it provides"
+      - term: "Implementation"
+        desc: "How it actually works"
+      - term: "Example"
+        desc: "Real-world usage scenario"
+
+  # ══════════════════════════════════════════════════════
+  # 7. TWO-COLUMN LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: two-column
+    h2: "Two-Column Comparison"
+    columns:
+      - h3: "Option A"
+        items:
+          - "First approach"
+          - "Simple to understand"
+          - "Quick to implement"
+      - h3: "Option B"
+        items:
+          - "Alternative approach"
+          - "More flexible"
+          - "Better for scale"
+
+  # ══════════════════════════════════════════════════════
+  # 8. TWO-COLUMN WITH NOTE
+  # ══════════════════════════════════════════════════════
+  - layout: two-column
+    h2: "Two Columns with Note"
+    columns:
+      - h3: "Column 1"
+        items:
+          - "Left side content"
+          - "Your primary points"
+      - h3: "Column 2"
+        items:
+          - "Right side content"
+          - "Supporting points"
+    note: "⚠️ Note below the columns for context"
+
+  # ══════════════════════════════════════════════════════
+  # 9. CODE LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: code
+    h2: "Code Block Example"
+    language: javascript
+    code: |
+      function greet(name) {
+        console.log(`Hello, ${name}!`);
+        return name;
+      }
+
+      greet("World");
+      // Output: Hello, World!
+    note: "Monospace font with syntax highlighting ready"
+
+  # ══════════════════════════════════════════════════════
+  # 9b. DIAGRAM LAYOUT (Mermaid)
+  # ══════════════════════════════════════════════════════
+  - layout: diagram
+    h2: "Mermaid Diagram Example"
+    graph: |
+      graph LR
+        A[User] --> B[Load Balancer]
+        B --> C[Web Server]
+        C --> D[(Database)]
+
+  # ══════════════════════════════════════════════════════
+  # 10. FEATURE-GRID LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: feature-grid
+    h2: "Feature Grid (Cards)"
+    cards:
+      - icon: "🚀"
+        h3: "Fast"
+        text: "Optimized for performance"
+      - icon: "🎨"
+        h3: "Beautiful"
+        text: "Professional design themes"
+      - icon: "⚡"
+        h3: "Lightweight"
+        text: "Minimal dependencies"
+      - icon: "🌐"
+        h3: "Universal"
+        text: "Works online and offline"
+      - icon: "🔧"
+        h3: "Customizable"
+        text: "Easy to extend and modify"
+      - icon: "📱"
+        h3: "Responsive"
+        text: "Beautiful on all devices"
+
+  # ══════════════════════════════════════════════════════
+  # 11. QUOTE LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: quote
+    quote: "The best way to predict the future is to invent it."
+    attribution: "Alan Kay"
+
+  # ══════════════════════════════════════════════════════
+  # 12. TWO-COLUMN: ITEMS + IMAGE
+  # ══════════════════════════════════════════════════════
+  - layout: two-column
+    h2: "Text Left, Image Right"
+    columns:
+      - items:
+          - "This is perfect for explaining something"
+          - "Your text goes on the left side"
+          - "Supporting image on the right"
+          - "Great for product features"
+      - image: assets/logo-small.png
+        image_alt: "Sample image on the right"
+
+  # ══════════════════════════════════════════════════════
+  # 13. TWO-COLUMN: IMAGE + ITEMS
+  # ══════════════════════════════════════════════════════
+  - layout: two-column
+    h2: "Image Left, Text Right"
+    columns:
+      - image: assets/logo-small.png
+        image_alt: "Sample image on the left"
+      - items:
+          - "Mirror of the previous layout"
+          - "Image on the left side"
+          - "Your content on the right"
+          - "Useful for before/after"
+
+  # ══════════════════════════════════════════════════════
+  # 14. STEPS LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: steps
+    h2: "Numbered Step Process"
+    steps:
+      - h3: "Initialize"
+        text: "Start with setup and configuration"
+      - h3: "Build"
+        text: "Create content and structure"
+      - h3: "Test"
+        text: "Verify everything works correctly"
+      - h3: "Deploy"
+        text: "Launch and make it available"
+      - h3: "Monitor"
+        text: "Track performance and feedback"
+
+  # ══════════════════════════════════════════════════════
+  # 15. SECTION-DIVIDER LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: section-divider
+    h2: "Advanced Techniques"
+    tagline: "Deep Dive into Customization"
+
+  # ══════════════════════════════════════════════════════
+  # 16. STAT-HERO LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: stat-hero
+    label: "Performance Metric"
+    stat: "98%"
+    description: "System uptime achieved"
+
+  # ══════════════════════════════════════════════════════
+  # 17. TITLE-CLOSING LAYOUT
+  # ══════════════════════════════════════════════════════
+  - layout: title-closing
+    logo: assets/logo-small.png
+    h1: "That's All 17!"
+    items:
+      - "You've seen all available layouts"
+      - "Mix and match for your content"
+      - "Create engaging presentations"
+    tagline: "Ready to build your own?"
+
+  # ══════════════════════════════════════════════════════
+  # 18. TWO-COLUMN: ITEMS + CODE
+  # ══════════════════════════════════════════════════════
+  - layout: two-column
+    h2: "Items + Code Column"
+    columns:
+      - items:
+          - "Text or bullets on the left"
+          - "Code block displayed on the right"
+          - "Perfect for explanations"
+          - "Great for tutorials"
+      - code: |
+          function example() {
+            const message = "Hello";
+            console.log(message);
+            return true;
+          }
+        language: javascript
+
+  # ══════════════════════════════════════════════════════
+  # 19. TWO-COLUMN: CODE + ITEMS
+  # ══════════════════════════════════════════════════════
+  - layout: two-column
+    h2: "Code + Items Column"
+    columns:
+      - code: |
+          const config = {
+            name: "Project",
+            version: "1.0.0",
+            active: true
+          };
+        language: javascript
+      - items:
+          - "Mirror of the previous layout"
+          - "Code on the left side"
+          - "Content on the right"
+          - "Useful for before/after"
+
+  # ══════════════════════════════════════════════════════
+  # 20. TWO-COLUMN: ITEMS + BADGE
+  # ══════════════════════════════════════════════════════
+  - layout: two-column
+    h2: "Items + Badge Column"
+    columns:
+      - items:
+          - "Text or bullets on the left"
+          - "Large badge displayed on right"
+          - "Perfect for highlighting keywords"
+          - "Good for emphasis"
+      - badge: "npm install"
+
+  # ══════════════════════════════════════════════════════
+  # 21. TWO-COLUMN: ITEMS + DIAGRAM
+  # ══════════════════════════════════════════════════════
+  - layout: two-column
+    h2: "Items + Diagram Column"
+    columns:
+      - items:
+          - "Explain the architecture"
+          - "Diagram renders on the right"
+          - "Supports all Mermaid types"
+      - graph: |
+          graph TD
+            A[Client] --> B[API]
+            B --> C[(DB)]
+
+  # ══════════════════════════════════════════════════════
+  # BONUS: Showcase section-divider as break
+  # ══════════════════════════════════════════════════════
+  - layout: section-divider
+    h2: "Key Takeaways"
+    tagline: "Best Practices"
+
+  # ══════════════════════════════════════════════════════
+  # Final summary with multiple elements
+  # ══════════════════════════════════════════════════════
+  - layout: bullets
+    h2: "Layout Selection Guide"
+    items:
+      - "Use TITLE for chapter openers"
+      - "Use BULLETS for content slides"
+      - "Use TWO-COLUMN for comparisons"
+      - "Use CODE for technical content"
+      - "Use FEATURE-GRID for overviews"
+      - "Use STEPS for processes"
+      - "Use IMAGE layouts for visuals"
+      - "Use STAT-HERO for metrics"
+      - "Mix layouts to stay engaging"
+      - "Avoid too much text per slide"

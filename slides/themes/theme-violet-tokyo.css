@@ -1,0 +1,86 @@
+/* ============================================================
+   VIOLET TOKYO — Deep Violet + Hot Pink Fluo
+   High-energy editorial with glow, particles, and urgency.
+   Inspired by 08-hybrid palette (pal-tv1 + glow).
+   Reserve for the slide that has to land.
+   ============================================================ */
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@700,600&f[]=satoshi@700,500,400&display=swap');
+
+:root {
+    --bg-primary:    #0f0824;
+    --bg-dark:       #06031a;
+    --bg-surface:    #1a1040;
+    --accent:        #ff2e88;
+    --accent-2:      #b080ff;
+    --text:          #f4e6ff;
+    --text-dim:      rgba(244,230,255,0.4);
+    --particle-c1:   255, 46, 136;
+    --particle-c2:   176, 128, 255;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Satoshi', sans-serif; background: var(--bg-primary); }
+
+.slide {
+    background:
+        radial-gradient(ellipse at 80% 10%, rgba(255,46,136,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 90%, rgba(176,128,255,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(176,128,255,0.04) 0%, var(--bg-primary) 70%);
+    position: relative;
+}
+.slide::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+        linear-gradient(rgba(255,46,136,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176,128,255,0.04) 1px, transparent 1px);
+    background-size: 55px 55px;
+    pointer-events: none; z-index: 0;
+}
+.slide-content { position: relative; z-index: 2; }
+#particleCanvas { display: block; }
+
+h1 { font-family: 'Clash Display', sans-serif; color: var(--text); text-transform: uppercase; letter-spacing: -0.02em; word-spacing: .1em;  line-height: 1.1; text-shadow: 0 0 30px rgba(255,46,136,0.5), 0 0 70px rgba(255,46,136,0.2); }
+h2 { font-family: 'Clash Display', sans-serif; color: var(--text); text-transform: uppercase; letter-spacing: -0.01em; word-spacing: .1em; }
+h3 { font-family: 'Satoshi', sans-serif; color: var(--accent-2); font-weight: 700; }
+p, li { font-family: 'Satoshi', sans-serif; color: var(--text); line-height: 1.65; }
+.subtitle { font-family: 'Satoshi', sans-serif; color: var(--accent); font-weight: 700; letter-spacing: 0.04em; text-shadow: 0 0 20px rgba(255,46,136,0.5); }
+.tagline  { font-family: 'Satoshi', sans-serif; color: var(--text-dim); }
+
+em { color: var(--accent); font-style: normal; text-shadow: 0 0 16px rgba(255,46,136,0.6); }
+
+.accent-line { height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); box-shadow: 0 0 12px var(--accent); }
+
+.neon-badge {
+    background: rgba(255,46,136,0.08);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+    animation: vt-pulse 2.2s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(255,46,136,0.5);
+}
+@keyframes vt-pulse {
+    0%,100% { box-shadow: 0 0 8px rgba(255,46,136,0.3); }
+    50%      { box-shadow: 0 0 22px rgba(255,46,136,0.7), 0 0 45px rgba(255,46,136,0.18); }
+}
+
+/* Blinking cursor on title slide */
+.title-slide h1::after { content: '▋'; color: var(--accent); animation: vt-blink 1.1s step-end infinite; margin-left: 4px; font-size: 0.8em; }
+@keyframes vt-blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+.logo { filter: drop-shadow(0 0 12px rgba(255,46,136,0.45)) drop-shadow(0 0 24px rgba(176,128,255,0.25)); }
+.bullet-list li::before { content: '◆ '; color: var(--accent); text-shadow: 0 0 8px rgba(255,46,136,0.5); }
+
+.progress-bar { height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); box-shadow: 0 0 10px var(--accent); }
+.nav-dot { border: 1px solid rgba(255,46,136,0.3); }
+.nav-dot.active { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 12px var(--accent), 0 0 24px rgba(255,46,136,0.3); }
+
+.edit-toggle { background: var(--accent); border-radius: 50%; box-shadow: 0 0 20px rgba(255,46,136,0.6); color: var(--bg-primary); }
+body.edit-active [contenteditable] { outline: 1px dashed var(--accent); background: rgba(255,46,136,0.04); }
+.edit-banner { background: rgba(255,46,136,0.07); border: 1px solid var(--accent); color: var(--accent); border-radius: 50px; font-family: 'Satoshi', sans-serif; box-shadow: 0 0 20px rgba(255,46,136,0.15); }
+
+.two-column > div, .kpi-card { border: 1px solid rgba(255,46,136,0.12); padding: var(--content-gap); background: rgba(176,128,255,0.03); }
+.two-column > div:first-child { border-top: 2px solid var(--accent-2); }
+.two-column > div:last-child  { border-top: 2px solid var(--accent); }
+.kpi-card { border-top: 2px solid var(--accent); }

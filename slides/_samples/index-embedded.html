@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Library</title>
+
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="lib/presentation.css">
+
+    <!-- Default theme -->
+    <link id="themeLink" rel="stylesheet" href="themes/theme-launch-pad.css">
+
+    <style>
+        /* Directory card enhancements */
+        .card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .card-link.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .card-link:not(.disabled) {
+            cursor: pointer;
+        }
+
+        .card-link:not(.disabled):hover {
+            cursor: pointer;
+        }
+
+        .card-link:not(.disabled):hover .card {
+            transform: translateY(-6px);
+            border: 2px solid rgba(240, 184, 64, 0.8);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* Home screen layout optimization */
+        .slide.title-slide .slide-content {
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Particle canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Progress bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Edit mode controls -->
+    <div class="edit-hotzone"></div>
+    <button class="edit-toggle" id="editToggle" title="Edit mode (E)">✏️</button>
+    <div class="edit-banner" id="editBanner">Edit Mode • Click text to edit • Ctrl+S to save</div>
+
+    <!-- Navigation dots -->
+    <nav class="nav-dots" id="navDots"></nav>
+
+    <!-- Theme switcher -->
+    <div class="theme-switcher" id="themeSwitcher">
+        <button class="theme-trigger" id="themeToggle" title="Switch theme">◐</button>
+        <div class="theme-panel" id="themePanel">
+            <div class="theme-panel-label">Theme</div>
+            <button class="theme-opt" data-theme="launch-pad">
+                <span class="theme-dot" style="background:#f0b840;box-shadow:0 0 6px #f0b840"></span>Launch Pad
+            </button>
+            <button class="theme-opt" data-theme="root-shell">
+                <span class="theme-dot" style="background:#39d353;box-shadow:0 0 6px #39d353"></span>Root Shell
+            </button>
+            <button class="theme-opt" data-theme="grid-zero">
+                <span class="theme-dot" style="background:#00ffcc;box-shadow:0 0 6px #00ffcc"></span>Grid Zero
+            </button>
+            <button class="theme-opt" data-theme="mission-control">
+                <span class="theme-dot" style="background:#f0a020;box-shadow:0 0 6px #f0a020"></span>Mission Control
+            </button>
+        </div>
+    </div>
+
+    <!-- Slides -->
+    <div id="slides-container"></div>
+
+    <!-- Loading screen -->
+    <div id="loading-screen">
+        <div class="loading-spinner"></div>
+        <div class="loading-label" id="loadingLabel">Loading presentation…</div>
+    </div>
+
+    <!-- Error screen -->
+    <div id="error-screen">
+        <div class="error-title">⚠ Cannot Load Presentation</div>
+        <div class="error-box" id="errorDetail"></div>
+    </div>
+
+    <!-- Optional: Disable edit mode globally (set before loading presentation.js) -->
+    <script>window.EDIT_MODE_ENABLED = false;</script>
+
+    <!-- Embedded presentation content -->
+    <script type="application/x-yaml" id="defaultPresentation">
+meta:
+  title: "Presentation Library"
+  logo: assets/logo-small.png
+  theme: mission-control
+  editing: false
+
+slides:
+
+  - layout: title
+    logo: assets/logo-small.png
+    h1: "Presentation Library"
+    subtitle: "Complete Collection of Topics"
+    tagline: "Click a card below to explore"
+
+  - layout: feature-grid
+    id: presentations
+    h2: "Available Presentations"
+    cards:
+      - icon: "🎓"
+        h3: "Full Demo"
+        text: "See all 17 layouts in action"
+      - icon: "☁️"
+        h3: "Azure DevOps"
+        text: "Git fundamentals deep dive"
+      - icon: "⚡"
+        h3: "Quick Demo"
+        text: "Fast overview of concepts"
+      - icon: "🚀"
+        h3: "Getting Started"
+        text: "First steps and basics"
+      - icon: "🎨"
+        h3: "Design Patterns"
+        text: "Visual design principles"
+      - icon: "📚"
+        h3: "Advanced Topics"
+        text: "Expert-level techniques"
+
+  - layout: bullets
+    h2: "How to Navigate"
+    items:
+      - "Click any presentation card to open it"
+      - "Use arrow keys or space to navigate"
+      - "Press 'E' to edit content inline"
+      - "Click ◐ button to change theme"
+      - "Each presentation is independent"
+      - "Use browser back button to return"
+    </script>
+
+    <!-- YAML parser & engine -->
+    <link rel="stylesheet" href="lib/highlight-github-dark.min.css">
+    <script src="lib/highlight.min.js"></script>
+    <script src="lib/mermaid.min.js"></script>
+    <script src="lib/js-yaml.min.js"></script>
+    <script src="lib/presentation.js"></script>
+
+    <!-- Fallback YAML loader -->
+    <script>
+    (async function() {
+        const defaultScript = document.getElementById('defaultPresentation');
+        const content = defaultScript.textContent.trim();
+
+        // If script tag is empty, try to load index.yaml
+        if (!content) {
+            try {
+                const response = await fetch('index.yaml');
+                if (response.ok) {
+                    const yaml = await response.text();
+                    defaultScript.textContent = yaml;
+                    console.log('✅ Loaded index.yaml');
+                }
+            } catch (err) {
+                console.warn('⚠️ Could not load index.yaml:', err.message);
+            }
+        }
+    })();
+    </script>
+
+    <!-- Directory navigation handler -->
+    <script>
+    // Map presentation titles to YAML files
+    const PRESENTATIONS = {
+        'Full Demo': 'full-demo.yaml',
+        'Azure DevOps': 'presentation.yaml',
+        'Quick Demo': 'quick-demo.yaml',
+        'Getting Started': 'quick-demo.yaml',
+        'Design Patterns': 'design-patterns.yaml',
+        'Advanced Topics': 'advanced-topics.yaml',
+    };
+
+    // Wait for presentation to load, then setup directory navigation with links
+    function setupDirectoryNavigation() {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            // Skip if already wrapped
+            if (card.parentElement && card.parentElement.classList.contains('card-link')) {
+                return;
+            }
+
+            const h3 = card.querySelector('h3');
+            if (h3) {
+                const title = h3.textContent.trim();
+                const file = PRESENTATIONS[title];
+                const parent = card.parentElement;
+
+                if (file) {
+                    // Create link wrapper
+                    const link = document.createElement('a');
+                    link.href = `azure-devops-git-bare.html?presentation=${file}`;
+                    link.className = 'card-link';
+                    link.setAttribute('title', title);
+
+                    // Move card inside link
+                    parent.insertBefore(link, card);
+                    link.appendChild(card);
+                } else {
+                    // Coming soon - make card clickable with alert
+                    const link = document.createElement('a');
+                    link.href = '#';
+                    link.className = 'card-link disabled';
+                    link.setAttribute('title', `${title} (coming soon)`);
+                    link.style.display = 'block';
+                    link.onclick = (e) => {
+                        e.preventDefault();
+                        alert(`"${title}" is coming soon!`);
+                    };
+
+                    // Move card inside link
+                    parent.insertBefore(link, card);
+                    link.appendChild(card);
+                }
+            }
+        });
+    }
+
+    // Use MutationObserver to detect when slides are rendered
+    const observer = new MutationObserver(() => {
+        if (document.querySelectorAll('.card').length > 0) {
+            setupDirectoryNavigation();
+            observer.disconnect();
+        }
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+    // Also try setup after a short delay as fallback
+    setTimeout(setupDirectoryNavigation, 500);
+    </script>
+
+</body>
+</html>

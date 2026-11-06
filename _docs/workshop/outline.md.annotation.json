@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "blocks": [
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKN6",
+      "kind": "heading:1",
+      "text": "# Workshop outline — Pragmatic Agentic Development: Docs, Context and Workflow in Practice"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKN7",
+      "kind": "paragraph",
+      "text": "Deck: [`slides/workshop.yaml`](../../slides/workshop.yaml) (skeleton, theme `teal-mustard`).\nAbstract: [`abstract.md`](./abstract.md). Sample project: [`splitwise-lite/`](../../splitwise-lite/) (read only)."
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKN8",
+      "kind": "heading:2",
+      "text": "## Metadata"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKN9",
+      "kind": "table",
+      "text": "| Field | Value |\n|---|---|\n| Event | AI Heroes, Nov 2026 |\n| Speaker | Marco De Nittis, Architect @ Synesthesia |\n| Duration | TBD |\n| Format | Hands-on workshop. Attendees work on their own laptop with a coding agent |\n| Audience | Solo developers and small teams who already use a coding agent and want consistent results |\n| Level | TODO: intermediate? |\n| Max attendees | TBD |\n| Prerequisites | Laptop, git, mise, a coding agent (Claude Code recommended), a browser. Basic Python reading helps but is not required |"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNA",
+      "kind": "heading:2",
+      "text": "## Agenda"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNB",
+      "kind": "paragraph",
+      "text": "Timing is a placeholder. Fill in once the duration is known."
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNC",
+      "kind": "table",
+      "text": "| # | Module | Slides (ids) | Time |\n|---|---|---|---|\n| 0 | Intro & setup | `cover`, `why`, `agenda`, `prereqs`, `setup`, `smoke-test` | TODO |\n| 1 | Sample project tour | `section-tour`, `tour-stack`, `tour-repo` | TODO |\n| 2 | Document first, agent oriented | `section-docs`, `docs-entry`, `docs-folders`, `docs-frontmatter`, `docs-rules` | TODO |\n| — | Exercise 1 — Orientation | `ex1-orient` | TODO |\n| 3 | Self-organizing docs | `section-selforg`, `selforg-tooling`, `selforg-drift`, `selforg-digest`, `selforg-librarian` | TODO |\n| — | Exercise 2 — Catch the drift | `ex2-drift` | TODO |\n| — | Exercise 3 — Inbox and librarian | `ex3-librarian` | TODO |\n| 4 | Skills | `skills`, `skills-anatomy` | TODO |\n| 5 | Fixed-stage workflow | `section-workflow`, `workflow-stages`, `workflow-guardrails` | TODO |\n| — | Exercise 4 — Build F1 Uneven splits | `section-handson`, `ex4-feature` | TODO |\n| 6 | Wrap-up | `takeaways`, `closing` | TODO |\n| — | Buffer / Q&A | — | TODO |"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKND",
+      "kind": "paragraph",
+      "text": "Note: in the deck all exercise slides sit together in module 6 (`section-handson` … `ex4-feature`).\nTODO: decide whether to interleave them after each module (as in the agenda above) or keep one block."
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNE",
+      "kind": "heading:2",
+      "text": "## Modules"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNF",
+      "kind": "heading:3",
+      "text": "### 0. Intro & setup"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNG",
+      "kind": "paragraph",
+      "text": "The single rule (document first, agent oriented), the agenda, prerequisites, clone and `mise install`,\nsmoke test (`mise tasks`, `mise run test`, `mise run docs-lint`, two tabs as two members)."
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNH",
+      "kind": "heading:3",
+      "text": "### 1. Sample project tour"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNJ",
+      "kind": "paragraph",
+      "text": "Splitwise Lite: Python 3.13, FastAPI, Jinja2 + HTMX, SQLite. Phase: development. Bootstrap features in\n`_docs/features/` (sign-in, groups, members, expenses, payments, balances). Roadmap F1–F9 in\n`_docs/product/overview.md`. Repository map from `AGENTS.md`."
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNK",
+      "kind": "heading:3",
+      "text": "### 2. Document first, agent oriented"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNM",
+      "kind": "paragraph",
+      "text": "`AGENTS.md` → `_docs/Home.md` → reading path → 2–3 owning docs. Folders encode kind of knowledge,\nfrontmatter encodes stability (`summary`, `read_when`, `updated` vs `verified`, `source_anchors`).\nOne fact / one owner, glossary owns vocabulary, contradictions go to `backlog.md`, STE writing.\nSources: `_docs/Home.md`, `_docs/_meta/authoring.md`, `_docs/_meta/phases.md`, `_docs/_meta/ste-writing.md`."
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNN",
+      "kind": "heading:3",
+      "text": "### 3. Self-organizing docs"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNP",
+      "kind": "paragraph",
+      "text": "`mise run docs-*` (lint, index, touched, changed, drift, review, stamp, verify, log, inbox, graph, new),\nthe drift loop, `mise run digest` for context budget, the librarian agent.\nSources: `_docs/_meta/tools.md`, `_docs/_meta/librarian.md`, `.claude/agents/librarian.md`, `mise.toml`."
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNQ",
+      "kind": "heading:3",
+      "text": "### 4. Skills"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNR",
+      "kind": "paragraph",
+      "text": "`splitwise-fullstack`, `coordinator`, `ste-writing` in `.claude/skills/`. Anatomy: description with\n\"when / when not\", reading table, hard rules, definition of done. Skills point to docs, they do not copy them."
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNS",
+      "kind": "heading:3",
+      "text": "### 5. Fixed-stage workflow"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNT",
+      "kind": "paragraph",
+      "text": "Proposed stages: Orient → Plan → Build → Verify → Close (derived from the `coordinator` and\n`splitwise-fullstack` skills; not named as such in splitwise-lite). Guardrails: max 3 subagents,\nmodel tier, file ownership, review agent, one commit for code + doc."
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNV",
+      "kind": "heading:3",
+      "text": "### 6. Wrap-up"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNW",
+      "kind": "paragraph",
+      "text": "The four takeaways from the abstract, how to adapt the approach to your own project."
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNX",
+      "kind": "heading:2",
+      "text": "## Exercises"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNY",
+      "kind": "paragraph",
+      "text": "Each exercise has a goal, steps and an expected result (slides use `bullets-badge-note` or `steps`)."
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKNZ",
+      "kind": "table",
+      "text": "| # | Slide | Goal | Based on | Key commands |\n|---|---|---|---|---|\n| 1 | `ex1-orient` | See how an agent finds its context | F1 Uneven splits in `_docs/product/overview.md`, reading paths in `_docs/Home.md` §4 | `mise run digest --summary _docs` |\n| 2 | `ex2-drift` | Fix a doc/code mismatch end to end | Backlog: *Payment receiver error* (`features/payments.md` vs `app/payments/service.py`). Alt: *Mine empty state text* (`features/balances.md`) | `mise run docs-touched`, `docs-verify`, `docs-lint` |\n| 3 | `ex3-librarian` | Turn a raw decision into library knowledge | Backlog: *Payer outside the participants* (`product/overview.md`, glossary). Note dropped in `_docs/inbox/` | `mise run docs-inbox`, librarian agent, `docs-log` |\n| 4 | `ex4-feature` | Run a roadmap feature through every stage | F1 Uneven splits, `coordinator` + `splitwise-fullstack` skills | `mise run docs-new feature uneven-splits`, `test`, `lint`, `docs-index`, `docs-lint` |"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKP0",
+      "kind": "paragraph",
+      "text": "Optional / stretch (TODO: decide): F2 Settlement plan (touches backlog *Greedy settlement plan*),\nwrite a new skill, resolve a design-vocabulary backlog item."
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKP1",
+      "kind": "heading:2",
+      "text": "## Attendee setup checklist"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKP2",
+      "kind": "paragraph",
+      "text": "Send before the workshop."
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKP3",
+      "kind": "paragraph",
+      "text": "Install mise (macOS `brew install mise`, Linux `curl https://mise.run | sh`, Windows `winget install jdx.mise`) and activate it in the shell"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKP4",
+      "kind": "paragraph",
+      "text": "Install git"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKP5",
+      "kind": "paragraph",
+      "text": "Install and log in to a coding agent (Claude Code recommended). TODO: list supported alternatives"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKP6",
+      "kind": "paragraph",
+      "text": "`git clone TODO:<repo-url> splitwise-lite && cd splitwise-lite`"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKP7",
+      "kind": "paragraph",
+      "text": "`mise trust`, then `mise install`"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKP8",
+      "kind": "paragraph",
+      "text": "`uv sync`"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKP9",
+      "kind": "paragraph",
+      "text": "`mise run test` passes"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPA",
+      "kind": "paragraph",
+      "text": "`mise run docs-lint` passes"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPB",
+      "kind": "paragraph",
+      "text": "`mise run dev` opens http://127.0.0.1:8000 and you can sign in as Alice"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPC",
+      "kind": "heading:2",
+      "text": "## Open TODOs"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPD",
+      "kind": "paragraph",
+      "text": "Duration, level, max attendees, timing per module"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPE",
+      "kind": "paragraph",
+      "text": "Public repo URL for splitwise-lite (currently one local commit, no remote)"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPF",
+      "kind": "paragraph",
+      "text": "Workshop starting point: tag/branch per exercise so late joiners can catch up"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPG",
+      "kind": "paragraph",
+      "text": "Confirm workflow stage names (slide `workflow-stages`); splitwise-lite does not name them explicitly"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPH",
+      "kind": "paragraph",
+      "text": "Exact prompts to paste for each exercise"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPJ",
+      "kind": "paragraph",
+      "text": "Sample inbox meeting note for exercise 3"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPK",
+      "kind": "paragraph",
+      "text": "Scope cut for F1 that fits the time slot (e.g. exact amounts only)"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPM",
+      "kind": "paragraph",
+      "text": "Supported agents other than Claude Code; behaviour of `.claude/` skills and agents in other tools"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPN",
+      "kind": "paragraph",
+      "text": "API key / account requirements, offline or no-agent fallback"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPP",
+      "kind": "paragraph",
+      "text": "Screenshots in `slides/assets/workshop/` (app, Home.md, docs-lint output)"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPQ",
+      "kind": "paragraph",
+      "text": "Decide exercise placement: interleaved vs one hands-on block"
+    },
+    {
+      "id": "01M6PTJ2ZN1MVS99Z6GE7NBKPR",
+      "kind": "paragraph",
+      "text": "Repo link, contacts and feedback form on `closing`"
+    }
+  ],
+  "annotations": [],
+  "highlights": [],
+  "revision": 0,
+  "provenance": [],
+  "history": [],
+  "agent": "01M6PTHVYJFKZ154RTBC2ZQN4P"
+}

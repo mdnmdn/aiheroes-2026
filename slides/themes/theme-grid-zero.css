@@ -1,0 +1,76 @@
+/* ============================================================
+   GRID ZERO — Neon Cyber (Cyan + Magenta)
+   Futuristic grid, particles, and dual-tone neon glow.
+   ============================================================ */
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@700,600&f[]=satoshi@700,500,400&display=swap');
+
+:root {
+    --bg-primary:    #0a0f1c;
+    --bg-surface:    #0f172a;
+    --accent:        #00ffcc;
+    --accent-2:      #ff00aa;
+    --text:          #f0f6ff;
+    --text-dim:      rgba(240,246,255,0.4);
+    --particle-c1:   0, 255, 204;
+    --particle-c2:   255, 0, 170;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Satoshi', sans-serif; background: var(--bg-primary); }
+
+.slide {
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(0,255,204,0.06) 0%, var(--bg-primary) 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(255,0,170,0.06) 0%, var(--bg-primary) 60%);
+    position: relative;
+}
+.slide::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+        linear-gradient(rgba(0,255,204,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,204,0.055) 1px, transparent 1px);
+    background-size: 55px 55px;
+    pointer-events: none; z-index: 0;
+}
+.slide-content { position: relative; z-index: 2; }
+#particleCanvas { display: block; }
+
+h1 { font-family: 'Clash Display', sans-serif; color: var(--text); text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.1; text-shadow: 0 0 30px rgba(0,255,204,0.4), 0 0 70px rgba(0,255,204,0.15); }
+h2 { font-family: 'Clash Display', sans-serif; color: var(--text); text-transform: uppercase; letter-spacing: -0.01em; }
+h3 { font-family: 'Satoshi', sans-serif; color: var(--accent); }
+p, li { font-family: 'Satoshi', sans-serif; color: var(--text); line-height: 1.65; }
+.subtitle { font-family: 'Satoshi', sans-serif; color: var(--accent); font-weight: 700; letter-spacing: 0.05em; text-shadow: 0 0 20px rgba(0,255,204,0.5); }
+.tagline  { font-family: 'Satoshi', sans-serif; color: var(--text-dim); }
+
+.accent-line { height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); box-shadow: 0 0 10px var(--accent); }
+
+.neon-badge {
+    background: rgba(0,255,204,0.07);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+    animation: gz-pulse 2s ease-in-out infinite;
+}
+@keyframes gz-pulse {
+    0%,100% { box-shadow: 0 0 8px rgba(0,255,204,0.3); }
+    50%      { box-shadow: 0 0 20px rgba(0,255,204,0.6), 0 0 40px rgba(0,255,204,0.15); }
+}
+
+.logo { filter: drop-shadow(0 0 12px rgba(0,255,204,0.4)) drop-shadow(0 0 24px rgba(255,0,170,0.2)); }
+.bullet-list li::before { content: '◆ '; color: var(--accent); }
+
+.progress-bar { height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); box-shadow: 0 0 10px var(--accent); }
+.nav-dot { border: 1px solid rgba(0,255,204,0.35); }
+.nav-dot.active { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 10px var(--accent), 0 0 20px rgba(0,255,204,0.3); }
+
+.edit-toggle { background: var(--accent); border-radius: 50%; box-shadow: 0 0 20px rgba(0,255,204,0.6); color: var(--bg-primary); }
+body.edit-active [contenteditable] { outline: 1px dashed var(--accent); background: rgba(0,255,204,0.04); }
+.edit-banner { background: rgba(0,255,204,0.07); border: 1px solid var(--accent); color: var(--accent); border-radius: 50px; font-family: 'Satoshi', sans-serif; box-shadow: 0 0 20px rgba(0,255,204,0.15); }
+.keyboard-hint { font-family: 'Satoshi', sans-serif; color: rgba(0,255,204,0.3); }
+
+.two-column > div, .kpi-card { border: 1px solid rgba(0,255,204,0.12); padding: var(--content-gap); background: rgba(0,255,204,0.03); }
+.two-column > div:first-child { border-top: 2px solid var(--accent-2); }
+.two-column > div:last-child  { border-top: 2px solid var(--accent); }
+.kpi-card { border-top: 2px solid var(--accent); }

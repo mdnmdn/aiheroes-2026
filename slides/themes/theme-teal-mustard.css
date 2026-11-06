@@ -1,0 +1,76 @@
+/* ============================================================
+   TEAL MUSTARD — Warm Editorial (Dark Teal + Mustard Gold)
+   Organic serif headings, ink-on-paper warmth, no particles.
+   Inspired by 01-pipeline palette (pal-teal).
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,800;1,700;1,800&family=Inter:wght@400;500;700&display=swap');
+
+:root {
+    --bg-primary:    #0f3a3a;
+    --bg-dark:       #081e1e;
+    --bg-surface:    #163d3d;
+    --accent:        #fcd34d;
+    --accent-2:      #ff9d6e;
+    --text:          #f0ead6;
+    --text-dim:      rgba(240,234,214,0.45);
+    --particle-c1:   252, 211, 77;
+    --particle-c2:   255, 157, 110;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--bg-primary); }
+
+.slide {
+    background:
+        radial-gradient(ellipse at 0% 100%, rgba(252,211,77,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 100% 0%, rgba(255,157,110,0.05) 0%, transparent 55%),
+        var(--bg-primary);
+    position: relative;
+}
+.slide::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+        linear-gradient(rgba(252,211,77,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(252,211,77,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none; z-index: 0;
+}
+.slide-content { position: relative; z-index: 2; }
+#particleCanvas { display: none; }
+
+h1 { font-family: 'Fraunces', serif; color: var(--text); font-style: italic; letter-spacing: -0.02em; line-height: 1.1; }
+h2 { font-family: 'Fraunces', serif; color: var(--text); letter-spacing: -0.01em; }
+h3 { font-family: 'Inter', sans-serif; color: var(--accent); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: calc(var(--h3-size) * 0.85); }
+p, li { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.7; }
+.subtitle { font-family: 'Inter', sans-serif; color: var(--text-dim); font-weight: 500; }
+.tagline  { font-family: 'Inter', sans-serif; color: var(--text-dim); }
+
+em { color: var(--accent); font-style: italic; }
+
+.accent-line { height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); opacity: 0.8; }
+
+.neon-badge {
+    background: rgba(252,211,77,0.08);
+    border: 1px solid var(--accent);
+    border-left: 3px solid var(--accent);
+    color: var(--accent);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+.logo { filter: drop-shadow(0 0 8px rgba(252,211,77,0.3)); }
+.bullet-list li::before { content: '— '; color: var(--accent); font-weight: 700; }
+
+.progress-bar { height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+.nav-dot { border: 1px solid rgba(252,211,77,0.3); border-radius: 2px; }
+.nav-dot.active { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 8px rgba(252,211,77,0.5); border-radius: 2px; }
+
+.edit-toggle { background: var(--accent); border-radius: 2px; color: var(--bg-primary); }
+body.edit-active [contenteditable] { outline: 1px dashed var(--accent); background: rgba(252,211,77,0.04); }
+.edit-banner { background: var(--bg-surface); border: 1px solid var(--accent); color: var(--accent); border-radius: 4px; font-family: 'Inter', sans-serif; }
+
+.two-column > div, .kpi-card { border: 1px solid rgba(252,211,77,0.14); padding: var(--content-gap); background: rgba(252,211,77,0.03); }
+.two-column > div:first-child { border-top: 2px solid var(--accent-2); }
+.two-column > div:last-child  { border-top: 2px solid var(--accent); }
+.kpi-card { border-top: 2px solid var(--accent); }

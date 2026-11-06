@@ -1,0 +1,64 @@
+# AI Heroes 2026 — "Documentation Is the King" talk + workshop.
+# `mise install` sets up the tools. `mise tasks` lists the tasks. `mise run <task>` runs one.
+# The sample project has its own mise.toml: `cd splitwise-lite && mise tasks`.
+
+[tools]
+python = "3.13"
+uv = "latest"
+
+[env]
+SLIDES_PORT = "8091"
+
+# ── Slides (engine docs: _docs/slides/README.md) ──
+
+[tasks.serve]
+description = "Serve slides/ on SLIDES_PORT (default 8091) without opening a browser"
+dir = "{{config_root}}/slides"
+run = "python3 -m http.server $SLIDES_PORT"
+
+[tasks.slides]
+description = "Serve slides/ and open the talk deck"
+alias = "talk"
+dir = "{{config_root}}/slides"
+run = "(sleep 1 && open \"http://localhost:$SLIDES_PORT/index.html?presentation=talk.yaml\") & python3 -m http.server $SLIDES_PORT"
+
+[tasks.workshop]
+description = "Serve slides/ and open the workshop deck"
+dir = "{{config_root}}/slides"
+run = "(sleep 1 && open \"http://localhost:$SLIDES_PORT/index.html?presentation=workshop.yaml\") & python3 -m http.server $SLIDES_PORT"
+
+[tasks.open]
+description = "Open a deck on the running server: mise run open [talk|workshop]"
+usage = 'arg "[deck]" help="talk or workshop" default="talk"'
+run = "open \"http://localhost:$SLIDES_PORT/index.html?presentation={{usage.deck}}.yaml\""
+
+[tasks.stop]
+description = "Stop the slides server on SLIDES_PORT"
+run = "lsof -ti tcp:$SLIDES_PORT | xargs kill 2>/dev/null || echo 'no server running'"
+
+[tasks.validate]
+description = "Check that every deck in slides/ parses and each slide has a layout and an id"
+run = """
+uv run --quiet --with pyyaml python - <<'EOF'
+import pathlib, sys, yaml
+ok = True
+for f in sorted(pathlib.Path("slides").glob("*.yaml")):
+    deck = yaml.safe_load(f.read_text())
+    slides = deck.get("slides") or []
+    if not deck.get("meta", {}).get("title"):
+        print(f"{f}: missing meta.title"); ok = False
+    for i, s in enumerate(slides):
+        for key in ("layout", "id"):
+            if not s.get(key):
+                print(f"{f}: slide {i} missing {key}"); ok = False
+    print(f"{f}: {len(slides)} slides")
+sys.exit(0 if ok else 1)
+EOF
+"""
+
+# ── Workshop sample project ──
+
+[tasks.splitwise]
+description = "Start the splitwise-lite sample app (dev server with reload)"
+dir = "{{config_root}}/splitwise-lite"
+run = "mise run dev"
