@@ -36,8 +36,8 @@ body { font-family: 'Satoshi', sans-serif; background: var(--bg-primary); }
 .slide-content { position: relative; z-index: 2; }
 #particleCanvas { display: block; }
 
-h1 { font-family: 'Clash Display', sans-serif; color: var(--text); text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.1; text-shadow: 0 0 30px rgba(0,255,204,0.4), 0 0 70px rgba(0,255,204,0.15); }
-h2 { font-family: 'Clash Display', sans-serif; color: var(--text); text-transform: uppercase; letter-spacing: -0.01em; }
+h1 { font-family: 'Clash Display', sans-serif; color: var(--text); text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.1; text-shadow: 0 0 30px rgba(0,255,204,0.4), 0 0 70px rgba(0,255,204,0.15); }
+h2 { font-family: 'Clash Display', sans-serif; color: var(--text); text-transform: uppercase; letter-spacing: 0.08em; }
 h3 { font-family: 'Satoshi', sans-serif; color: var(--accent); }
 p, li { font-family: 'Satoshi', sans-serif; color: var(--text); line-height: 1.65; }
 .subtitle { font-family: 'Satoshi', sans-serif; color: var(--accent); font-weight: 700; letter-spacing: 0.05em; text-shadow: 0 0 20px rgba(0,255,204,0.5); }

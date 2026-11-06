@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 760">
+  <g transform="translate(195 95) scale(4.5833)" fill="none" stroke="#39d353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20a6 6 0 0 1 12 0M14.5 14.2A6 6 0 0 1 22 20"/>
+  </g>
+  <text x="250" y="270" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#d0e8ff">Audience</text>
+  <text x="250" y="315" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#5b7fa6">What they know, what they do not</text>
+  <g transform="translate(695 95) scale(4.5833)" fill="none" stroke="#39d353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19.5 10.5A8 8 0 1 1 13.5 4.5"/><path d="M15.9 11.1A4 4 0 1 1 12.9 8.1"/><path d="M12 12l7-7M16 5h3v3"/>
+  </g>
+  <text x="750" y="270" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#d0e8ff">Goal</text>
+  <text x="750" y="315" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#5b7fa6">What the document must achieve</text>
+  <g transform="translate(1195 95) scale(4.5833)" fill="none" stroke="#39d353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/><path d="M8 10h8M8 14h5"/>
+  </g>
+  <text x="1250" y="270" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#d0e8ff">Tone and style</text>
+  <text x="1250" y="315" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#5b7fa6">Voice and sentence structure</text>
+  <g transform="translate(195 435) scale(4.5833)" fill="none" stroke="#39d353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v5M5 17v-3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/>
+  </g>
+  <text x="250" y="610" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#d0e8ff">Organization</text>
+  <text x="250" y="655" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#5b7fa6">How to arrange the information</text>
+  <g transform="translate(695 435) scale(4.5833)" fill="none" stroke="#39d353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M5.64 5.64l12.72 12.72"/>
+  </g>
+  <text x="750" y="610" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#d0e8ff">Prohibitions</text>
+  <text x="750" y="655" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#5b7fa6">No repetition. No marketing words.</text>
+  <g transform="translate(1195 435) scale(4.5833)" fill="none" stroke="#39d353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="8" y="8" width="13" height="13" rx="2"/><path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/><path d="M12 13h5M12 17h3"/>
+  </g>
+  <text x="1250" y="610" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#d0e8ff">Models</text>
+  <text x="1250" y="655" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#5b7fa6">Examples to imitate</text>
+</svg>

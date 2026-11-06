@@ -20,18 +20,17 @@ Talk outline (skeleton). Deck: `slides/talk.yaml`. Abstract: `abstract.md`.
 
 ## Narrative arc
 
-1. **The old deal.** Documentation was the task that slowed teams down: written late, read rarely,
-   stale by the next release.
-2. **The flip.** An agent arrives with no memory. It acts on what is written. Docs now decide how
-   fast and how well the AI delivers. A stale document is worse than a missing one.
-3. **The virtuous circle.** Better docs give better agent output. The agent that makes a change
-   updates the docs in the same change, so upkeep gets cheaper and the docs get better.
-4. **Self-organizing docs.** Replace a bloated instruction file with a library: a short entry point
-   that is a map, frontmatter that says when to read each doc, one owner per fact, a librarian
-   agent that keeps the structure.
-5. **Practical tips.** What the audience can apply on Monday, for humans and agents.
+Structure from the speaker notes in `outlient.txt`.
 
-Running example: `splitwise-lite/` (its `AGENTS.md`, `_docs/Home.md` and `_docs/_meta/`).
+1. **Introduction.** Docs used to slow teams down; with agents they drive. Documentation lives in
+   code, for humans and for agents, and comes in many kinds. Three principles: context, control,
+   efficiency. Writing guidelines.
+2. **Code documents.** Tech docs for developers and agents: constraints (structure, folders,
+   metadata, length, controlled language), media choice, text-based diagrams, smart flows that
+   separate content from representation.
+3. **Functional documents.** Analysis, offers, estimates. What agents get wrong, a structured
+   approach, rules for the agent, the chat is not a garbage bin, advanced techniques.
+4. **Takeaways.** Discipline, awareness, rules and examples, review, tools and formats.
 
 ---
 
@@ -39,37 +38,17 @@ Running example: `splitwise-lite/` (its `AGENTS.md`, `_docs/Home.md` and `_docs/
 
 | # | Act | Slide ids | Time (TBD) |
 |---|-----|-----------|------------|
-| 0 | Opening | `cover`, `hook`, `agenda` | 0-3 min |
-| 1 | The old deal | `act1-old-deal`, `docs-bottleneck` | 3-6 min |
-| 2 | The flip: agents act on what is written | `act2-flip`, `no-memory`, `human-vs-agent`, `docs-drive-output` | 6-12 min |
-| 3 | The virtuous circle | `act3-circle`, `virtuous-circle`, `circle-practices`, `circle-evidence` | 12-19 min |
-| 4 | Self-organizing docs vs bloated instruction files | `act4-self-organizing`, `bloated-vs-library`, `agents-map`, `building-blocks`, `frontmatter-example` | 19-29 min |
-| 5 | Practical tips | `act5-tips`, `tips`, `tooling` | 29-35 min |
-| 6 | Closing + Q&A | `closing` | 35-40 min |
+| 0 | Opening | `cover`, `hook`, `agenda` (hidden) | 0-2 min |
+| 1 | Introduction | `act1-intro` (hidden), `the-flip`, `doc-kinds`, `principles`, `all-about-context`, `claude-rage`, `control`, `efficiency`, `guidelines` | 2-12 min |
+| 2 | Code documents | `act2-code-docs`, `tech-docs`, `constraints`, `controlled-language`, `media`, `picture-words`, `text-diagrams`, `rich-diagrams` | 12-24 min |
+| 3 | Functional documents | `act3-functional-docs`, `human-docs`, `agent-pitfalls`, `structured-approach`, `writing-rules`, `not-garbage-bin`, `advanced-techniques`, `smart-flows`, `smart-flows-examples` | 24-34 min |
+| 4 | Takeaways + closing | `takeaways`, `closing` | 34-40 min |
 
-### Act 1 — The old deal
-- `docs-bottleneck`: written late, read rarely, stale fast, low ROI.
-- TODO: add a sourced stat or a personal anecdote (a `stat-hero` slide was dropped from the skeleton).
-
-### Act 2 — The flip
-- `no-memory`: quote from splitwise-lite `docs-guidelines.md` §1.
-- `human-vs-agent`: humans route around bad docs; agents believe them.
-- `docs-drive-output`: docs → context → output. TODO: one real before/after example.
-
-### Act 3 — The virtuous circle
-- `virtuous-circle`: diagram of the loop.
-- `circle-practices`: same session, same commit; one fact one owner; present tense.
-- `circle-evidence`: TODO: real numbers or drop.
-
-### Act 4 — Self-organizing docs
-- `bloated-vs-library`: one big file loaded every time vs a map plus focused docs.
-- `agents-map`: excerpt of the "Where to look" table in splitwise-lite `AGENTS.md`.
-- `building-blocks`: Home map, frontmatter, librarian agent, STE writing, glossary, phases.
-- `frontmatter-example`: `summary`, `read_when`, `verified` fields.
-
-### Act 5 — Practical tips
-- `tips`: five tips, TODO.
-- `tooling`: `mise run digest`, `docs-touched`, `docs-lint` from splitwise-lite `_meta/tools.md`.
+### Notes
+- `hook`: opening line, "Your agent has read every word you wrote. And it believes all of them." / "Did you read them?"
+- `claude-rage`: screenshot of an agent-written report. TODO: the story behind it.
+- `controlled-language`: the before/after sentence is an invented example. TODO: replace with a real one.
+- `rich-diagrams`: "Archify" kept as in the notes. TODO: confirm the tool name.
 
 ---
 

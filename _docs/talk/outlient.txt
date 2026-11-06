@@ -1,0 +1,188 @@
+agenda 
+- introduction
+- code documents
+- functional documents
+- takeaways
+
+Documentation:
+- on code / in code
+- for humans
+  - which one?
+- for agents
+
+
+Principles
+- all is about context
+- Control
+- Efficiency
+
+
+all about context
+- too less : missing informations
+- too much: inefficiencies, wrong assumptions
+- limited resource
+   - cost
+   - speed
+   
+Claude Rage
+image: tmp/claude-rage.png
+
+Control
+- awareness
+- not review code: OK
+- not review human targeted docs: NEVER
+- define how to organize and write
+- LLMs does not converges
+
+Efficiency
+- effective media
+- token usage
+- correct informations
+- small review
+- auto generation
+
+Kind of documentation:
+- what: tech, functional, offers, estimation, mail
+- who: agents, tech humans, functional humans, business
+- durability: long, short
+- stability: one shot, evolving
+- context: single document, ecosystem
+- how often: reference, one shot 
+
+Guidelines
+- LLM/ag efficiency
+- controlled style and phrase structure
+- controlled terminology and phrasing
+- cognitive efficiency for humans and agents
+- long term mantainability
+
+Tech docs:
+- types:
+  - code docs
+  - specifications
+  - functional
+- target:
+  - humans share
+  - agent context
+  
+Constraint:
+- document structure
+- document organization (folder)
+- metadata
+- length
+- CNL Controlled Natural Languages
+ - ASD STE 100
+ - glossary
+ 
+ 
+Media
+- LLM are good on text 
+  -  read and write
+- sometimes with images
+  - mainly read
+
+Diagrams:
+- picture is better than 1000 words
+  - sometimes
+- a diagram is
+
+Diagrams:
+- DSL 
+- good: textual based
+  - ascii diagrams
+  - mermaid
+  - DBML
+- more 
+
+Diagrams 2:
+- nice looking / very expressive:
+  - draw.io
+  - excalidraw
+  - archify
+- XML / json format: Ok but no so
+- DSL
+- render to image loop
+
+Smart flows:
+- separate contents from representation
+- seperate intelligence from automation
+
+- build DSL (better if already existent)
+- build tool to generate docs from final media
+
+
+Human target documents:
+- tech oriented: easier
+- stakeholder oriented:
+  - anaylis
+  - offers
+  - estimation
+- Agents:
+  - caotic organization
+  - wrong tone
+bottom line: with agent docs is faster ma not to much
+
+Structured approach
+- build a structure - storytelling
+  - use a model 
+- define a 2 liners goals for each paragrah
+- build paragraph progressively
+- mantain an unstructure container (file/folder) with unstructured info
+
+Rules:
+- define audience 
+  -  what is known, what is not
+- define goal
+- define tone
+- style structure
+- how to organize information
+- rules (do not repeat)
+- forbidden expressions (no marketing)
+- use models
+
+Structured approach
+- claude/chatgpt is not your garbage bin
+  - sometime is
+- structure the reason and the storytelling
+- share overview and contextualized informations
+- use also for wild exploration
+  - make 
+- know when you brainstom and when you build structure
+- know your tools
+
+Adavanced techniques:
+- create textual DSL for specific tasks
+  - example: estimation
+- use diagrame
+- avoid HTML / markup heavy formats
+
+Take away:
+- discipline
+- awareness
+- define rules and example
+- review
+- use tools and format smartly
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

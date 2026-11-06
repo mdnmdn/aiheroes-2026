@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 760">
+  <g transform="translate(195 95) scale(4.5833)" fill="none" stroke="#39d353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="18" height="6" rx="1"/><rect x="3" y="13" width="7" height="8" rx="1"/><path d="M14 13h7M14 17h7M14 21h4"/>
+  </g>
+  <text x="250" y="270" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#d0e8ff">Discipline</text>
+  <text x="250" y="315" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#5b7fa6">Structure before content</text>
+  <g transform="translate(695 95) scale(4.5833)" fill="none" stroke="#39d353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/>
+  </g>
+  <text x="750" y="270" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#d0e8ff">Awareness</text>
+  <text x="750" y="315" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#5b7fa6">Know what is in the context</text>
+  <g transform="translate(1195 95) scale(4.5833)" fill="none" stroke="#39d353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 7l2 2 4-4M3 17l2 2 4-4"/><path d="M13 6h8M13 12h8M13 18h8"/>
+  </g>
+  <text x="1250" y="270" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#d0e8ff">Rules and examples</text>
+  <text x="1250" y="315" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#5b7fa6">Write them down, give models</text>
+  <g transform="translate(445 435) scale(4.5833)" fill="none" stroke="#39d353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/><path d="M8 11l2 2 4-4"/>
+  </g>
+  <text x="500" y="610" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#d0e8ff">Review</text>
+  <text x="500" y="655" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#5b7fa6">Always, for docs meant for humans</text>
+  <g transform="translate(945 435) scale(4.5833)" fill="none" stroke="#39d353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/><path d="M14 4l-4 16"/>
+  </g>
+  <text x="1000" y="610" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#d0e8ff">Tools and formats</text>
+  <text x="1000" y="655" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#5b7fa6">Text, DSLs, generation</text>
+</svg>

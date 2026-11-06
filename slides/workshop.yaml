@@ -40,16 +40,9 @@ slides:
       - "Cognitive efficient"
       - "Agent independent"
 
-  # ── 4. The sample project ───────────────────────────────────────
-  - layout: bullets
-    id: project
-    h2: "The sample project: Splitwise"
-    items:
-      - "Split the bill, keep the friends"
-      - "Python, FastAPI, HTMX"
-      - "Works with any coding agent"
 
-  # ── 5. Notable spec-driven workflows─────────────────────────────
+
+  # ── 4. Notable spec-driven workflows─────────────────────────────
   - layout: bullets
     id: spec-driven
     h2: "Notable spec-driven workflows"
@@ -58,7 +51,7 @@ slides:
       - "BMAD: 21+ specialized agents, highly structured"
       - "GitHub Spec Kit, Tessl, ..."
 
-  # ── 6. Stream coding ────────────────────────────────────────────
+  # ── 5. Stream coding ────────────────────────────────────────────
   - layout: two-column
     id: stream-coding
     h2: "Stream coding"
@@ -70,7 +63,7 @@ slides:
       - image: assets/workshop/stream-coding-logo.png
         image_alt: "Stream Coding logo"
 
-  # ── 7. Documentation ────────────────────────────────────────────
+  # ── 6. Documentation ────────────────────────────────────────────
   - layout: two-column
     id: documentation
     h2: "Documentation"
@@ -87,7 +80,7 @@ slides:
           - "Wiki-like indexing"
           - "Maintained by specialized agents and tools"
 
-  # ── 8. Agents ───────────────────────────────────────────────────
+  # ── 7. Agents ───────────────────────────────────────────────────
   - layout: two-column
     id: agents
     h2: "Two specialized agents"
@@ -105,7 +98,7 @@ slides:
           - "Defines and enforces the flow"
           - "Low context usage"
 
-  # ── 9. Hub and spoke ───────────────────────────────────────────
+  # ── 8. Hub and spoke ───────────────────────────────────────────
   - layout: bullets
     id: hub-and-spoke
     h2: "Hub and spoke"
@@ -115,7 +108,7 @@ slides:
       - "Each spoke gets a fresh, narrow context and returns a short result"
       - "Spokes never talk to each other: every hand-off goes through the hub"
 
-  # ── 10. Two flows ───────────────────────────────────────────────
+  # ── 9. Two flows ───────────────────────────────────────────────
   - layout: two-column
     id: flows
     h2: "Two flows"
@@ -132,14 +125,34 @@ slides:
           - "Design thinking"
           - "Planning before coding"
           - "Multiple subagents"
-
+          
+  # ── 10. The sample project ───────────────────────────────────────
+  - layout: bullets
+    id: project
+    h2: "The sample project: Splitwise"
+    items:
+      - "Split the bill, keep the friends"
+      - "Python, FastAPI, HTMX"
+      - "Works with any coding agent"
+      
   # ── 11. Let's do it ─────────────────────────────────────────────
   - layout: section-divider
     id: lets-do-it
     h2: "Let's do it"
-    tagline: "TODO: tagline"
+#    tagline: "TODO: tagline"
 
-  # ── 12. Project startup ─────────────────────────────────────────
+  # ── 12. Let's build ──────────────────────────────────────────────
+  - layout: two-column
+    id: hands-on
+    h2: "Let's build"
+    columns:
+      - image: assets/workshop/aiheroes-2026-agentic-qr.png
+        image_alt: "QR code to tinyurl.com/aiheroes-2026-agentic"
+      - items:
+          - "github.com/mdnmdn/aiheroes-2026-splitwise-sample"
+          - "tinyurl.com/aiheroes-2026-agentic"
+
+  # ── 13. Project startup ─────────────────────────────────────────
   - layout: two-column
     id: project-startup
     h2: "Project startup"
@@ -155,7 +168,7 @@ slides:
           - "Set up AGENTS.md"
           - "Write the initial agent definitions"
 
-  # ── 13. Design ──────────────────────────────────────────────────
+  # ── 14. Design ──────────────────────────────────────────────────
   - layout: two-column
     id: design
     h2: "Design"
@@ -170,7 +183,7 @@ slides:
           - "Coherence is hard to maintain"
           - "UI/UX directives for the agents"
 
-  # ── 14. Planned flow ────────────────────────────────────────────
+  # ── 15. Planned flow ────────────────────────────────────────────
   - layout: steps
     id: flow-planned
     h2: "Planned flow"
@@ -182,27 +195,20 @@ slides:
       - h3: "Work"
         text: "The coordinator dispatches tasks to available subagents · Keep the plan updated"
 
-  # ── 15. Let's build ──────────────────────────────────────────────
-  - layout: two-column
-    id: hands-on
-    h2: "Let's build"
-    columns:
-      - image: assets/workshop/aiheroes-2026-agentic-qr.png
-        image_alt: "QR code to tinyurl.com/aiheroes-2026-agentic"
-      - items:
-          - "github.com/mdnmdn/aiheroes-2026-splitwise-sample"
-          - "tinyurl.com/aiheroes-2026-agentic"
 
-  # ── 16. Further improvements ────────────────────────────────────
+  
+  # ── 16. Let's do it (2) ─────────────────────────────────────────
   - layout: section-divider
-    id: improvements
-    h2: "Further improvements"
-    tagline: "TODO: tagline"
+    id: lets-do-it-2
+    h2: "Let's do it"
+#    tagline: "TODO: tagline"
+
+
 
   # ── 17. Next steps ──────────────────────────────────────────────
   - layout: bullets
-    id: next-steps
-    h2: "Next steps"
+    id: improvements
+    h2: "Further improvements"
     items:
       - "Customize the style of the docs"
       - "Integrate a task system: Azure DevOps, Jira, GitHub Issues, ..."
@@ -221,3 +227,20 @@ slides:
           - "ponytail"
       - image: assets/workshop/better-tools-logos.png
         image_alt: "Logos of graphify, serena, openwolf and ponytail"
+
+  # ── 19. Conclusions ─────────────────────────────────────────────
+  - layout: bullets
+    id: conclusions
+    h2: "Conclusions — takeaways"
+    items:
+      - "An opinionated flow"
+      - "Adapt it to the team flow"
+      - "Your own documentation rules"
+
+  # ── 20. Q&A ─────────────────────────────────────────────────────
+  - layout: title-closing
+    id: closing
+    h1: "Thank you"
+    items:
+      - "Questions?"
+    image: assets/workshop/bow.png

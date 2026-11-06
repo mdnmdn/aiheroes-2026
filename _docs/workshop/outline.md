@@ -25,15 +25,18 @@ Timing is a placeholder. Fill in once the duration is known.
 | 1 | Workshop title | `cover` | TODO |
 | 2 | Agenda | `agenda` | TODO |
 | 3 | Goals | `goals` | TODO |
-| 4 | Sample project | `project` | TODO |
-| 5 | Notable spec-driven workflows | `spec-driven` | TODO |
-| 6 | Stream coding | `stream-coding` | TODO |
-| 7 | Documentation | `documentation` | TODO |
-| 8 | Two specialized agents: librarian, coordinator | `agents` | TODO |
-| 9 | Hub and spoke | `hub-and-spoke` | TODO |
-| 10 | Two flows, let's do it: project startup, design, planned / proposal | `flows`, `lets-do-it`, `project-startup`, `design`, `flow-planned` | TODO |
-| 11 | Let's build (QR, repo link) | `hands-on` | TODO |
-| 12 | Further improvements: better tools | `improvements`, `next-steps`, `better-tools` | TODO |
+| 4 | Notable spec-driven workflows | `spec-driven` | TODO |
+| 5 | Stream coding | `stream-coding` | TODO |
+| 6 | Documentation | `documentation` | TODO |
+| 7 | Two specialized agents: librarian, coordinator | `agents` | TODO |
+| 8 | Hub and spoke | `hub-and-spoke` | TODO |
+| 9 | Two flows | `flows` | TODO |
+| 10 | Sample project | `project` | TODO |
+| 11 | Lab 1, small changes: let's build (QR, repo link), project startup, design, planned flow | `lets-do-it`, `hands-on`, `project-startup`, `design`, `flow-planned` | TODO |
+| 12 | Lab 2, important change | `lets-do-it-2` | TODO |
+| 13 | Further improvements: better tools | `improvements`, `better-tools` | TODO |
+| 14 | Conclusions: takeaways (opinionated flow, adapt to the team flow, your own doc rules) | `conclusions` | TODO |
+| 15 | Thank you, Q&A | `closing` | TODO |
 
 Note: the deck was reset to a skeleton (2026-11-05) and is built progressively. The module and
 exercise notes below describe the previous draft; reuse them as material.

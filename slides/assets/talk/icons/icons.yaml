@@ -1,0 +1,48 @@
+canon: [principle-context, principle-control, principle-efficiency]
+
+categories:
+  principles:
+    principle-context:
+      goal: the limited information an agent holds in its context window
+      keywords: [context, window, information, documents, limit]
+    principle-control:
+      goal: the human decides the rules for how docs are written and organized
+      keywords: [control, rules, settings, adjust, human]
+    principle-efficiency:
+      goal: right information, fewest tokens, fast
+      keywords: [efficiency, speed, tokens, fast, lean]
+  rules:
+    rule-audience:
+      goal: who reads the doc, what they know and what they do not
+      keywords: [audience, readers, users, people]
+    rule-goal:
+      goal: what the document must achieve
+      keywords: [goal, target, objective, purpose]
+    rule-tone:
+      goal: voice and sentence structure
+      keywords: [tone, style, voice, writing]
+    rule-organization:
+      goal: how to arrange the information
+      keywords: [organization, structure, hierarchy, tree]
+    rule-prohibitions:
+      goal: do not repeat, no marketing words
+      keywords: [prohibitions, ban, forbidden, avoid]
+    rule-models:
+      goal: give examples to imitate
+      keywords: [models, examples, template, imitate]
+  takeaways:
+    takeaway-discipline:
+      goal: structure before content
+      keywords: [discipline, structure, direction, method]
+    takeaway-awareness:
+      goal: know what is in the context
+      keywords: [awareness, see, visibility, context]
+    takeaway-rules-examples:
+      goal: write rules down and give models
+      keywords: [rules, checklist, examples, written]
+    takeaway-review:
+      goal: always review docs meant for humans
+      keywords: [review, inspect, verify, check]
+    takeaway-tools-formats:
+      goal: text, DSLs, generation
+      keywords: [tools, formats, code, dsl, generation]

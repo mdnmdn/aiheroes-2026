@@ -42,6 +42,7 @@ h2 { font-family: 'JetBrains Mono', monospace; color: var(--accent); text-transf
 h2::before { content: '// '; color: var(--accent-dim); font-weight: 400; }
 h3 { font-family: 'JetBrains Mono', monospace; color: var(--text-dim); }
 h3::before { content: '# '; color: var(--accent-dim); }
+.step h3::before { content: none; } /* steps already show a number */
 p, li { font-family: 'JetBrains Mono', monospace; color: var(--text); line-height: 1.7; }
 .subtitle { font-family: 'JetBrains Mono', monospace; color: var(--text-dim); font-weight: 400; }
 .subtitle::before { content: '> '; color: var(--accent); }

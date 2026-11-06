@@ -35,7 +35,7 @@ Full docs (read on demand, don't guess fields):
 
 | Want | Layout | Key fields |
 |---|---|---|
-| Opening / closing | `title` / `title-closing` | h1, subtitle, tagline, logo / h1, items, tagline |
+| Opening / closing | `title` / `title-closing` | h1, subtitle, tagline, logo / h1, items, tagline, image (optional, renders beside the items) |
 | Chapter break | `section-divider` | h2, tagline |
 | Bullets | `bullets`, `bullets-note`, `bullets-badge`, `bullets-badge-note` | h2, items, note, badge |
 | Term: definition | `bullets-strong` | h2, items[{term, desc}] |
